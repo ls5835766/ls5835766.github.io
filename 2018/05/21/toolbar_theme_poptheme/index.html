@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android, DIY" />
+  <meta name="keywords" content="实用,个人博客," />
 
 
 
@@ -79,13 +79,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="My_blog">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta name="description" content="在android5.0以后，添加了Material Design设计语言，这个确实是非常酷炫的、使用Toolbar代替了之前的Actionbar确实是灵活了很多。   之前我们只能在application或者activity中使用theme主题，但是在android 5.0中可以给View使用theme主题，这个View及其子View都会使用这个theme，给了我们设计一个很大的灵活性   给V">
+<meta name="keywords" content="实用,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android中Toolbar中app:theme与app:popupTheme相关属性的详解">
+<meta property="og:url" content="http://yoursite.com/2018/05/21/toolbar_theme_poptheme/index.html">
 <meta property="og:site_name" content="My_blog">
+<meta property="og:description" content="在android5.0以后，添加了Material Design设计语言，这个确实是非常酷炫的、使用Toolbar代替了之前的Actionbar确实是灵活了很多。   之前我们只能在application或者activity中使用theme主题，但是在android 5.0中可以给View使用theme主题，这个View及其子View都会使用这个theme，给了我们设计一个很大的灵活性   给V">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-21T06:07:44.402Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My_blog">
+<meta name="twitter:title" content="android中Toolbar中app:theme与app:popupTheme相关属性的详解">
+<meta name="twitter:description" content="在android5.0以后，添加了Material Design设计语言，这个确实是非常酷炫的、使用Toolbar代替了之前的Actionbar确实是灵活了很多。   之前我们只能在application或者activity中使用theme主题，但是在android 5.0中可以给View使用theme主题，这个View及其子View都会使用这个theme，给了我们设计一个很大的灵活性   给V">
 
 
 
@@ -115,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/21/toolbar_theme_poptheme/"/>
 
 
 
 
 
-  <title>归档 | My_blog</title>
+  <title>android中Toolbar中app:theme与app:popupTheme相关属性的详解 | My_blog</title>
   
 
 
@@ -140,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,111 +249,225 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 2 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/21/toolbar_theme_poptheme/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhangy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My_blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/21/toolbar_theme_poptheme/" itemprop="url">
-              
-                <span itemprop="name">android中Toolbar中app:theme与app:popupTheme相关属性的详解</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">android中Toolbar中app:theme与app:popupTheme相关属性的详解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-21T14:04:04+08:00"
-              content="2018-05-21" >
-          05-21
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-21T14:04:04+08:00">
+                2018-05-21
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/20/hello-world/" itemprop="url">
-              
-                <span itemprop="name">个人博客搭建详解（Windows和Mac通用版）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-20T18:37:57+08:00"
-              content="2018-05-20" >
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <blockquote>
+<p>在android5.0以后，添加了Material Design设计语言，这个确实是非常酷炫的、使用Toolbar代替了之前的Actionbar确实是灵活了很多。</p>
+</blockquote>
+<blockquote>
+<p>之前我们只能在application或者activity中使用theme主题，但是在android 5.0中可以给View使用theme主题，这个View及其子View都会使用这个theme，给了我们设计一个很大的灵活性</p>
+</blockquote>
+<ul>
+<li>给View添加theme的方法<br>android：theme=”你的theme”</li>
+</ul>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v7.widget.Toolbar</span><br><span class="line">    android:id=&quot;@+id/toolbar&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;?attr/actionBarSize&quot;</span><br><span class="line">    android:background=&quot;?attr/colorPrimary&quot;</span><br><span class="line">    android:theme=&quot;@style/AppTheme.AppBarOverlay&quot;</span><br><span class="line">    app:popupTheme=&quot;@style/AppTheme.PopupOverlay&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
+<pre><code>上面代码的最后一个属性app:popupTheme：自定义我们弹出的菜单样式
+ app:popupTheme=&quot;@style/ThemeOverlay.AppCompat.Light&quot;代表的就是白底黑字
+</code></pre><blockquote>
+<p>最后一个问题使用android:theme这个属性，在android3.0以上可以应用到View及其子View的，但是在android3.0以下只能应用到当前的View，是不能使子View起作用的，所有要用到该theme的View都要加上，这个切记，当然了android3.0以下的遗留机器已经很少了，如果你不用适配这个版本，你完全可以忽略这个。</p>
+</blockquote>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Zhangy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Zhangy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实用/" rel="tag"># 实用</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/20/hello-world/" rel="next" title="个人博客搭建详解（Windows和Mac通用版）">
+                <i class="fa fa-chevron-left"></i> 个人博客搭建详解（Windows和Mac通用版）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -356,6 +475,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -584,6 +707,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
