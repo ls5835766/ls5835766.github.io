@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="实用,个人博客," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="View的事件体系整体上理解还是比较简单的，但是有很多的细节，这些细节很容易被忽略掉。所以写下这篇文章来加深记忆。 1、View事件的相关基础 View是一种界面层的控件的一种抽象，它代表了一个控件。ViewGroup为控件组。View中也可以包含多个控件，形成控件树。ImageButton是一个View，LinearLayout是一个View，也是一个ViewGroup。 2、View的坐标以及">
+<meta name="keywords" content="实用,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="View的基础知识">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/View事件的体系/index.html">
+<meta property="og:site_name" content="My_blog">
+<meta property="og:description" content="View的事件体系整体上理解还是比较简单的，但是有很多的细节，这些细节很容易被忽略掉。所以写下这篇文章来加深记忆。 1、View事件的相关基础 View是一种界面层的控件的一种抽象，它代表了一个控件。ViewGroup为控件组。View中也可以包含多个控件，形成控件树。ImageButton是一个View，LinearLayout是一个View，也是一个ViewGroup。 2、View的坐标以及">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20151205110240614">
+<meta property="og:image" content="https://img-blog.csdn.net/20151205122157577?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://img-blog.csdn.net/20151209191025129">
+<meta property="og:updated_time" content="2018-05-22T18:31:36.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="View的基础知识">
+<meta name="twitter:description" content="View的事件体系整体上理解还是比较简单的，但是有很多的细节，这些细节很容易被忽略掉。所以写下这篇文章来加深记忆。 1、View事件的相关基础 View是一种界面层的控件的一种抽象，它代表了一个控件。ViewGroup为控件组。View中也可以包含多个控件，形成控件树。ImageButton是一个View，LinearLayout是一个View，也是一个ViewGroup。 2、View的坐标以及">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20151205110240614">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'DIY-green'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/23/View事件的体系/"/>
+
+
+
+
+
+  <title>View的基础知识 | My_blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/View事件的体系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhangy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">View的基础知识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T02:29:28+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>View的事件体系整体上理解还是比较简单的，但是有很多的细节，这些细节很容易被忽略掉。所以写下这篇文章来加深记忆。</p>
+<h2 id="1、View事件的相关基础"><a href="#1、View事件的相关基础" class="headerlink" title="1、View事件的相关基础"></a>1、View事件的相关基础</h2><p><img src="https://img-blog.csdn.net/20151205110240614" alt=""></p>
+<p>View是一种界面层的控件的一种抽象，它代表了一个控件。<br>ViewGroup为控件组。<br>View中也可以包含多个控件，形成控件树。<br>ImageButton是一个View，LinearLayout是一个View，也是一个ViewGroup。</p>
+<h2 id="2、View的坐标以及高"><a href="#2、View的坐标以及高" class="headerlink" title="2、View的坐标以及高"></a>2、View的坐标以及高</h2><h5 id="2-1视图坐标系"><a href="#2-1视图坐标系" class="headerlink" title="2.1视图坐标系"></a>2.1视图坐标系</h5><h6 id="在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示："><a href="#在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示：" class="headerlink" title="在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示："></a>在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示：</h6><p><img src="https://img-blog.csdn.net/20151205122157577?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="子View所在的区域"></p>
+<p>这四个参数我们可以通过如下方法得到：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//假设v是个View实例</span><br><span class="line">//View v=···;</span><br><span class="line">int top = v.getTop();</span><br><span class="line">int right = v.getRight();</span><br><span class="line">int bottom = v.getBottom();</span><br><span class="line">int left = v.getLeft();</span><br></pre></td></tr></table></figure></p>
+<p>拿到这四个参数以后，我们可以计算处宽和高</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">int width=right-left</span><br><span class="line">int height=bottom-top</span><br></pre></td></tr></table></figure>
+<p>我们知道在Android3.0之前，是不能用属性动画的。只能用补间动画。而补间动画所做的动画效果只是将View的显示转为图片。然后给这个图片做透明的，平移，旋转，缩放等效果。这带来的问题是，View所在的区域类并没有发生变化，变化的是个“幻影”而已。也就是说，在Android3.0之前，要将View区域发生变化，就得改变top、left、right、bottom。如果是我们想要将动画的实际位置发生变化的时候，并且要兼容3.0之前的软件，我们就从3.0开始，加入了几个新的参数：x,y,translationX,translationY。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=left+translationX;</span><br><span class="line">y=top+translationY;</span><br></pre></td></tr></table></figure></p>
+<p>这样，如果我们想要移动View,只需要改变translationX和translationY就可以了。top和left不会发生变化。也可以使属性动画去改变translationX和translationY。</p>
+<h4 id="2-2、Android坐标系（以屏幕的左上角为原点）"><a href="#2-2、Android坐标系（以屏幕的左上角为原点）" class="headerlink" title="2.2、Android坐标系（以屏幕的左上角为原点）"></a>2.2、Android坐标系（以屏幕的左上角为原点）</h4><p><img src="https://img-blog.csdn.net/20151209191025129" alt=""></p>
+<p>属于MotionEvent的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getX(),getY() 相当于父容器</span><br><span class="line">getRawX(),getRawY() 相当于屏幕的</span><br></pre></td></tr></table></figure></p>
+<p>##3、MotionEvent和TouchSlop</p>
+<h5 id="3-1-MotionEvent"><a href="#3-1-MotionEvent" class="headerlink" title="3.1 MotionEvent"></a>3.1 MotionEvent</h5><blockquote>
+<p>在手指接触屏幕后产生的一系列事件中，典型的事件类型有如下几种：</p>
+</blockquote>
+<ul>
+<li>ACTION_DOWN–手指刚接触屏幕</li>
+<li>ACTION_MOVE–手指在屏幕上滑动</li>
+<li>ACTION_UP—手指从屏幕上松开的那一瞬间</li>
+</ul>
+<blockquote>
+<p>正常情况下，一次手指接触屏幕的行为会发生一系列的点击事件，考虑下面几种情况：</p>
+</blockquote>
+<ul>
+<li>点击屏幕后离开松手  事件的序列是DOWN–UP</li>
+<li>点击屏幕后移送一圈，然后松手   事件的序列是  DOWN–MOVE….—-UP</li>
+</ul>
+<h5 id="3-2、TouchSlop"><a href="#3-2、TouchSlop" class="headerlink" title="3.2、TouchSlop"></a>3.2、TouchSlop</h5><p>TouchSlop是系统所能识别处的被认为是滑动最小的距离。换句话说，当手指在屏幕上滑动的时候，如果两次滑动之间的距离小于这个常量，那么系统就不认为你是在进行滑动操作。原因很简单：滑动的距离太短，系统不认为它是滑动的。这个值是一个常量，和设备有关。一般在源码里面找到。frameworks/base/core/res/res/values/config.xml文件中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dimen name=&quot;config_viewConfigurationTouchSlop&quot;&gt;8dp&lt;/dimen&gt;</span><br></pre></td></tr></table></figure></p>
+<p>##4、VelocityTracker速度追踪</p>
+<p>用于追踪手指在滑动过程中的速度，包括水平和竖直<br>它所谓的滑动速度指的就是一段时间内手指划过的像素数，比如假设时间间隔为1s,速度就是指手指在水平方向从左向右划过的100像素时，速度就是100，那如果向左滑动时，速度就是负值了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 首先在View的onTouchEvent方法中获取追踪速度的对象</span><br><span class="line">    VelocityTracker velocityTracker = VelocityTracker.obtain();</span><br><span class="line">    // 将追踪速度对象与事件绑定起来：</span><br><span class="line">    velocityTracker.addMovement(event);</span><br><span class="line">    // 获取速度之前先计算速度，这一句不可缺：</span><br><span class="line">    velocityTracker.computeCurrentVelocity(1000); //1S时间内</span><br><span class="line">    // 分别计算水平和竖直速度：</span><br><span class="line">    int xVelocity = (int) velocityTracker.getXVelocity();</span><br><span class="line">    int yVelocity = (int) velocityTracker.getYVelocity();</span><br><span class="line"></span><br><span class="line">    // 不需要使用它的时候，来重置和回收：</span><br><span class="line">    velocityTracker.clear();</span><br><span class="line">    velocityTracker.recycle();</span><br></pre></td></tr></table></figure></p>
+<h2 id="5、GestureDetector手势检测"><a href="#5、GestureDetector手势检测" class="headerlink" title="5、GestureDetector手势检测"></a>5、GestureDetector手势检测</h2><p>用户辅助检测用户的单击，滑动，长按，双击等行为<br>一般情况下，我们知道View类有个View.OnTouchListener内部接口，通过重写它的onTouch(View v,MotionEvent event)方法，我们可以处理一些touch事件，但是这个方法太过于简单，如果需要处理一些复杂的手势，用这个接口就会很麻烦（因为我们要根据用户触摸的轨迹去pan’duan是什么手势）。</p>
+<pre><code>onTouch与onTouchEvent的区别：
+1、onTouch
+onTouch方法是viewOnTouchListener()接口定义的方法。
+当一个View绑定了OnTouchListener后，当touch事件触发时，就会调用onTouch方法
+（当把手放到View上后，onTouch方法被一遍一遍的调用）
+2、o&apos;nTouchEvent
+onTouchEvent是override的Activity的方法
+重新Activity的onTouchEvent方法后，当屏幕有touch事件的时候，此方法就会被调用
+（当手放到Activity上时，onTouchEvent方法就会一遍一遍的被调用）
+3、touch事件的传递
+在一个Activity里面放置一个TextView的实例tv,并且这个tv的属性设定为march_parent。在这种情况下，当我们的手放置在屏幕上的时候，首先会是tv响应touch事件，执行onTouch方法。
+当返回的是true的时候，就表示touch事件被onTouch方法处理完毕以后，是不会把这个事件传递给Activity的，也就是说不会onTouchEvent方法不会被调用。
+（当把手放置在屏幕上，onTouch方法会被一遍一遍的被调用）
+
+当onTouch返回的是false的时候，表示touch事件没有被tv完全处理，onTouch返回以后，touch事件会被传递给Activity，onTouchEvent方法会被调用
+</code></pre><p>上面啰嗦了那么多，主要就是为了给下面做一些区别，加深我们的印象</p>
+<p>GesturDetector主要是通过它的onTouchEvent方法实现不同手势的识别。虽然能识别手势，但是不同的手势要怎么处理是程序员所要干的事情</p>
+<h5 id="具体的回掉法详见View的事件体系"><a href="#具体的回掉法详见View的事件体系" class="headerlink" title="具体的回掉法详见View的事件体系"></a>具体的回掉法详见<a href="https://blog.csdn.net/zizidemenghanxiao/article/details/50184295" target="_blank" rel="noopener">View的事件体系</a></h5>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Zhangy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Zhangy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实用/" rel="tag"># 实用</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/22/Menu/" rel="next" title="Android Menu的用法">
+                <i class="fa fa-chevron-left"></i> Android Menu的用法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhangy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jianshu.com/users/0ad0a0afc409/latest_articles" title="DIY-green简书" target="_blank">DIY-green简书</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、View事件的相关基础"><span class="nav-number">1.</span> <span class="nav-text">1、View事件的相关基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、View的坐标以及高"><span class="nav-number">2.</span> <span class="nav-text">2、View的坐标以及高</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1视图坐标系"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">2.1视图坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示："><span class="nav-number">2.0.0.1.1.</span> <span class="nav-text">在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、Android坐标系（以屏幕的左上角为原点）"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.2、Android坐标系（以屏幕的左上角为原点）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-MotionEvent"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">3.1 MotionEvent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2、TouchSlop"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">3.2、TouchSlop</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、GestureDetector手势检测"><span class="nav-number">3.</span> <span class="nav-text">5、GestureDetector手势检测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#具体的回掉法详见View的事件体系"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">具体的回掉法详见View的事件体系</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhangy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
