@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="实用,个人博客," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Scroller 是一个专门用于处理滚动效果的工具类，大家所熟知的控件在内部都是使用Scroller来实现的，例如ViewPager,ListView等。而如果能够把Scroller的用法熟练掌握的话，我们自己可以轻松实现出类似ViewPager这样的功能。 ####先撇开Scroller类不说，其实任何一个控件都是可以滚动的，因为在View类中都有scrollTo和scrollerBy这两个方法">
+<meta name="keywords" content="实用,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Scroller 完全解析">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/Scroller/index.html">
+<meta property="og:site_name" content="My_blog">
+<meta property="og:description" content="Scroller 是一个专门用于处理滚动效果的工具类，大家所熟知的控件在内部都是使用Scroller来实现的，例如ViewPager,ListView等。而如果能够把Scroller的用法熟练掌握的话，我们自己可以轻松实现出类似ViewPager这样的功能。 ####先撇开Scroller类不说，其实任何一个控件都是可以滚动的，因为在View类中都有scrollTo和scrollerBy这两个方法">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20160107203341461">
+<meta property="og:image" content="https://img-blog.csdn.net/20160110164232041">
+<meta property="og:image" content="https://img-blog.csdn.net/20160114230048304">
+<meta property="og:updated_time" content="2018-05-23T06:41:16.398Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Scroller 完全解析">
+<meta name="twitter:description" content="Scroller 是一个专门用于处理滚动效果的工具类，大家所熟知的控件在内部都是使用Scroller来实现的，例如ViewPager,ListView等。而如果能够把Scroller的用法熟练掌握的话，我们自己可以轻松实现出类似ViewPager这样的功能。 ####先撇开Scroller类不说，其实任何一个控件都是可以滚动的，因为在View类中都有scrollTo和scrollerBy这两个方法">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20160107203341461">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'DIY-green'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/23/Scroller/"/>
+
+
+
+
+
+  <title>Android Scroller 完全解析 | My_blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/Scroller/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhangy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Android Scroller 完全解析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T14:14:08+08:00">
+                2018-05-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Scroller 是一个专门用于处理滚动效果的工具类，大家所熟知的控件在内部都是使用Scroller来实现的，例如ViewPager,ListView等。而如果能够把Scroller的用法熟练掌握的话，我们自己可以轻松实现出类似ViewPager这样的功能。</p>
+<p>####先撇开Scroller类不说，其实任何一个控件都是可以滚动的，因为在View类中都有scrollTo和scrollerBy这两个方法。如下图所示</p>
+<p><img src="https://img-blog.csdn.net/20160107203341461" alt=""></p>
+<blockquote>
+<p>这两个方法都是用于对View进行滚动的。它们之间有什么区别呢？</p>
+</blockquote>
+<pre><code>scrollBy :让View相对于当前的位置滚动某段距离
+scrollTo :让View相对于初始位置滚动某段距离
+</code></pre><p>举个例子：</p>
+<h4 id="activit-main-xml的布局文件"><a href="#activit-main-xml的布局文件" class="headerlink" title="activit_main.xml的布局文件"></a>activit_main.xml的布局文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:id=&quot;@+id/layout&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    android:orientation=&quot;vertical&quot;</span><br><span class="line">    tools:context=&quot;com.example.guolin.scrollertest.MainActivity&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=&quot;@+id/scroll_to_btn&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;scrollTo&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:id=&quot;@+id/scroll_by_btn&quot;</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;scrollBy&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>外层我们使用了一个LinerLayout，然后里面包含了两个按钮，一个用于触发scrollTo逻辑，一个用于触发scrollBy逻辑</p>
+<h4 id="接着修改MainActivity中的代码"><a href="#接着修改MainActivity中的代码" class="headerlink" title="接着修改MainActivity中的代码"></a>接着修改MainActivity中的代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    private LinearLayout layout;</span><br><span class="line"></span><br><span class="line">    private Button scrollToBtn;</span><br><span class="line"></span><br><span class="line">    private Button scrollByBtn;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        layout = (LinearLayout) findViewById(R.id.layout);</span><br><span class="line">        scrollToBtn = (Button) findViewById(R.id.scroll_to_btn);</span><br><span class="line">        scrollByBtn = (Button) findViewById(R.id.scroll_by_btn);</span><br><span class="line">        scrollToBtn.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                layout.scrollTo(-60, -100);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        scrollByBtn.setOnClickListener(new View.OnClickListener() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onClick(View v) &#123;</span><br><span class="line">                layout.scrollBy(-60, -100);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>没错，代码就是这么简单。当点击了scrollTo按钮时，我们调用了LinearLayout的scrollTo()方法，当点击了scrollBy按钮时，调用了LinearLayout的scrollBy()方法。</p>
+<p>那有的朋友可能会问了，为什么都是调用的LinearLayout中的scroll方法？<br>这里一定要注意，不管是scrollTo()还是scrollBy()方法，滚动的都是该View内部的内容，而LinearLayout中的内容就是我们的两个Button，如果你直接调用button的scroll方法的话，那结果一定不是你想看到的。</p>
+<p>另外还有一点需要注意，就是两个scroll方法中传入的参数，第一个参数x表示相对于当前位置横向移动的距离，正值向左移动，负值向右移动，单位是像素。第二个参数y表示相对于当前位置纵向移动的距离，正值向上移动，负值向下移动，单位是像素。</p>
+<p><img src="https://img-blog.csdn.net/20160110164232041" alt=""></p>
+<p>可以看到，当我们点击scrollTo按钮时，两个按钮会一起向右下方滚动，因为我们传入的参数是-60和-100，因此向右下方移动是正确的。但是你会发现，之后再点击scrollTo按钮就没有任何作用了，界面不会再继续滚动，只有点击scrollBy按钮界面才会继续滚动，并且不停点击scrollBy按钮界面会一起滚动下去。</p>
+<p>现在我们再来回头看一下这两个方法的区别，scrollTo()方法是让View相对于初始的位置滚动某段距离，由于View的初始位置是不变的，因此不管我们点击多少次scrollTo按钮滚动到的都将是同一个位置。而scrollBy()方法则是让View相对于当前的位置滚动某段距离，那每当我们点击一次scrollBy按钮，View的当前位置都进行了变动，因此不停点击会一直向右下方移动。</p>
+<p>#####—————————————分割线————————————————————————<br>通过这个例子来理解，相信大家已经把scrollTo()和scrollBy()这两个方法的区别搞清楚了，但是现在还有一个问题，从上图中大家也能看得出来，目前使用这两个方法完成的滚动效果是跳跃式的，没有任何平滑滚动的效果。没错，只靠scrollTo()和scrollBy()这两个方法是很难完成ViewPager这样的效果的，因此我们还需要借助另外一个关键性的工具，也就我们今天的主角Scroller。</p>
+<pre><code>Scroller的基本用法其实还是比较简单的，主要可以分为以下几个步骤： 
+1. 创建Scroller的实例 
+2. 调用startScroll()方法来初始化滚动数据并刷新界面 
+3. 重写computeScroll()方法，并在其内部完成平滑滚动的逻辑 
+</code></pre><p>那么下面我们就按照上述的步骤，通过一个模仿ViewPager的简易例子来学习和理解一下Scroller的用法。<br>新建一个ScrollerLayout并让它继承自ViewGroup来作为我们的简易ViewPager布局，代码如下所示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Created by guolin on 16/1/12.</span><br><span class="line"> */</span><br><span class="line">public class ScrollerLayout extends ViewGroup &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 用于完成滚动操作的实例</span><br><span class="line">     */</span><br><span class="line">    private Scroller mScroller;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 判定为拖动的最小移动像素数</span><br><span class="line">     */</span><br><span class="line">    private int mTouchSlop;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 手机按下时的屏幕坐标</span><br><span class="line">     */</span><br><span class="line">    private float mXDown;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 手机当时所处的屏幕坐标</span><br><span class="line">     */</span><br><span class="line">    private float mXMove;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 上次触发ACTION_MOVE事件时的屏幕坐标</span><br><span class="line">     */</span><br><span class="line">    private float mXLastMove;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 界面可滚动的左边界</span><br><span class="line">     */</span><br><span class="line">    private int leftBorder;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 界面可滚动的右边界</span><br><span class="line">     */</span><br><span class="line">    private int rightBorder;</span><br><span class="line"></span><br><span class="line">    public ScrollerLayout(Context context, AttributeSet attrs) &#123;</span><br><span class="line">        super(context, attrs);</span><br><span class="line">        // 第一步，创建Scroller的实例</span><br><span class="line">        mScroller = new Scroller(context);</span><br><span class="line">        ViewConfiguration configuration = ViewConfiguration.get(context);</span><br><span class="line">        // 获取TouchSlop值，用于判断当前用户的操作是否拖动</span><br><span class="line">        mTouchSlop = ViewConfigurationCompat.getScaledPagingTouchSlop(configuration);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) &#123;</span><br><span class="line">        super.onMeasure(widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">        int childCount = getChildCount();</span><br><span class="line">        for (int i = 0; i &lt; childCount; i++) &#123;</span><br><span class="line">            View childView = getChildAt(i);</span><br><span class="line">            // 为ScrollerLayout中的每一个子控件测量大小</span><br><span class="line">            measureChild(childView, widthMeasureSpec, heightMeasureSpec);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onLayout(boolean changed, int l, int t, int r, int b) &#123;</span><br><span class="line">        if (changed) &#123;</span><br><span class="line">            int childCount = getChildCount();</span><br><span class="line">            for (int i = 0; i &lt; childCount; i++) &#123;</span><br><span class="line">                View childView = getChildAt(i);</span><br><span class="line">                // 为ScrollerLayout中的每一个子控件在水平方向上进行布局</span><br><span class="line">                childView.layout(i * childView.getMeasuredWidth(), 0, (i + 1) * childView.getMeasuredWidth(), childView.getMeasuredHeight());</span><br><span class="line">            &#125;</span><br><span class="line">            // 初始化左右边界值</span><br><span class="line">            leftBorder = getChildAt(0).getLeft();</span><br><span class="line">            rightBorder = getChildAt(getChildCount() - 1).getRight();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onInterceptTouchEvent(MotionEvent ev) &#123;</span><br><span class="line">        switch (ev.getAction()) &#123;</span><br><span class="line">            case MotionEvent.ACTION_DOWN:</span><br><span class="line">                //记录用户手指按下时X坐标位置</span><br><span class="line">                mXDown = ev.getRawX();</span><br><span class="line">                mXLastMove = mXDown;</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_MOVE:</span><br><span class="line">               //记录用户手指在屏幕上拖动时X坐标的位置</span><br><span class="line">                mXMove = ev.getRawX();</span><br><span class="line">                float diff = Math.abs(mXMove - mXDown);</span><br><span class="line">                mXLastMove = mXMove;</span><br><span class="line">                // 当手指拖动值大于TouchSlop值时，认为应该进行滚动，拦截子控件的事件</span><br><span class="line">                if (diff &gt; mTouchSlop) &#123;</span><br><span class="line">                    return true;  //阻止事件传递到子控件中</span><br><span class="line">                &#125;</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return super.onInterceptTouchEvent(ev);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean onTouchEvent(MotionEvent event) &#123;</span><br><span class="line">        switch (event.getAction()) &#123;</span><br><span class="line">            case MotionEvent.ACTION_MOVE: //表示用户正在拖动布局</span><br><span class="line">                mXMove = event.getRawX();</span><br><span class="line">                int scrolledX = (int) (mXLastMove - mXMove);</span><br><span class="line">                if (getScrollX() + scrolledX &lt; leftBorder) &#123;</span><br><span class="line">                    scrollTo(leftBorder, 0);</span><br><span class="line">                    return true;</span><br><span class="line">                &#125; else if (getScrollX() + getWidth() + scrolledX &gt; rightBorder) &#123;</span><br><span class="line">                    scrollTo(rightBorder - getWidth(), 0);</span><br><span class="line">                    return true;</span><br><span class="line">                &#125;</span><br><span class="line">                scrollBy(scrolledX, 0);</span><br><span class="line">                mXLastMove = mXMove;</span><br><span class="line">                break;</span><br><span class="line">            case MotionEvent.ACTION_UP:</span><br><span class="line">                // 当手指抬起时，根据当前的滚动值来判定应该滚动到哪个子控件的界面</span><br><span class="line">                int targetIndex = (getScrollX() + getWidth() / 2) / getWidth(); //这是以一整页为单元的</span><br><span class="line">                int dx = targetIndex * getWidth() - getScrollX(); //从滑动的getScrollX()到targetIndex页剩余的距离</span><br><span class="line">                // 第二步，调用startScroll()方法来初始化滚动数据并刷新界面</span><br><span class="line">                mScroller.startScroll(getScrollX(), 0, dx, 0);</span><br><span class="line">                invalidate();</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        return super.onTouchEvent(event);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void computeScroll() &#123;</span><br><span class="line">        // 第三步，重写computeScroll()方法，并在其内部完成平滑滚动的逻辑</span><br><span class="line">        if (mScroller.computeScrollOffset()) &#123;</span><br><span class="line">            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());</span><br><span class="line">            invalidate();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>整个Scroller用法的代码都在这里了，代码并不长，一共才100多行，我们一点点来看。</p>
+<p>首先在ScrollerLayout的构造函数里面我们进行了上述步骤中的第一步操作，即创建Scroller的实例，由于Scroller的实例只需创建一次，因此我们把它放到构造函数里面执行。另外在构建函数中我们还初始化的TouchSlop的值，这个值在后面将用于判断当前用户的操作是否是拖动。<br>接着重写onMeasure()方法和onLayout()方法，在onMeasure()方法中测量ScrollerLayout里的每一个子控件的大小，在onLayout()方法中为ScrollerLayout里的每一个子控件在水平方向上进行布局。如果有朋友对这两个方法的作用还不理解，可以参照我之前写的一篇文章 Android视图绘制流程完全解析，带你一步步深入了解View(二) 。</p>
+<p>接着重写onInterceptTouchEvent()方法， 在这个方法中我们记录了用户手指按下时的X坐标位置，以及用户手指在屏幕上拖动时的X坐标位置，当两者之间的距离大于TouchSlop值时，就认为用户正在拖动布局，然后我们就将事件在这里拦截掉，阻止事件传递到子控件当中。 </p>
+<p>那么当我们把事件拦截掉之后，就会将事件交给ScrollerLayout的onTouchEvent()方法来处理。如果当前事件是ACTION_MOVE，说明用户正在拖动布局，那么我们就应该对布局内容进行滚动从而影响拖动事件，实现的方式就是使用我们刚刚所学的scrollBy()方法，用户拖动了多少这里就scrollBy多少。另外为了防止用户拖出边界这里还专门做了边界保护，当拖出边界时就调用scrollTo()方法来回到边界位置。 </p>
+<p>如果当前事件是ACTION_UP时，说明用户手指抬起来了，但是目前很有可能用户只是将布局拖动到了中间，我们不可能让布局就这么停留在中间的位置，因此接下来就需要借助Scroller来完成后续的滚动操作。首先这里我们先根据当前的滚动位置来计算布局应该继续滚动到哪一个子控件的页面，然后计算出距离该页面还需滚动多少距离。接下来我们就该进行上述步骤中的第二步操作，调用startScroll()方法来初始化滚动数据并刷新界面。startScroll()方法接收四个参数，第一个参数是滚动开始时X的坐标，第二个参数是滚动开始时Y的坐标，第三个参数是横向滚动的距离，正值表示向左滚动，第四个参数是纵向滚动的距离，正值表示向上滚动。紧接着调用invalidate()方法来刷新界面。 </p>
+<p>现在前两步都已经完成了，最后我们还需要进行第三步操作，即重写computeScroll()方法，并在其内部完成平滑滚动的逻辑 。在整个后续的平滑滚动过程中，computeScroll()方法是会一直被调用的，因此我们需要不断调用Scroller的computeScrollOffset()方法来进行判断滚动操作是否已经完成了，如果还没完成的话，那就继续调用scrollTo()方法，并把Scroller的curX和curY坐标传入，然后刷新界面从而完成平滑滚动的操作。</p>
+<p>####现在ScrollerLayout已经准备好了，接下来我们修改activity_main.xml布局中的内容，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;com.example.guolin.scrollertest.ScrollerLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    &gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;100dp&quot;</span><br><span class="line">        android:text=&quot;This is first child view&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;100dp&quot;</span><br><span class="line">        android:text=&quot;This is second child view&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;Button</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;100dp&quot;</span><br><span class="line">        android:text=&quot;This is third child view&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/com.example.guolin.scrollertest.ScrollerLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，这里我们在ScrollerLayout中放置了三个按钮用来进行测试，其实这里不仅可以放置按钮，放置任何控件都是没问题的。<br>最后MainActivity当中删除掉之前测试的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>好的，所有代码都在这里了，现在我们可以运行一下程序来看一看效果了，如下图所示：</p>
+<p><img src="https://img-blog.csdn.net/20160114230048304" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Zhangy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Zhangy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实用/" rel="tag"># 实用</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/23/View事件的体系/" rel="next" title="View的基础知识">
+                <i class="fa fa-chevron-left"></i> View的基础知识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhangy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jianshu.com/users/0ad0a0afc409/latest_articles" title="DIY-green简书" target="_blank">DIY-green简书</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#activit-main-xml的布局文件"><span class="nav-number">1.</span> <span class="nav-text">activit_main.xml的布局文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#接着修改MainActivity中的代码"><span class="nav-number">2.</span> <span class="nav-text">接着修改MainActivity中的代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhangy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
