@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="我是一个小帅哥，我的博客很精彩！！">
+<meta name="description" content="##invalidate() 、postInvalidate()、requestLayout() 总结  ##1、invalidate()  Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是">
 <meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="个人博客搭建详解（Windows和Mac通用版）">
-<meta property="og:url" content="http://yoursite.com/2018/05/20/hello-world/index.html">
+<meta property="og:title" content="UI刷新绘制">
+<meta property="og:url" content="http://yoursite.com/2018/05/23/UI刷新绘制/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="我是一个小帅哥，我的博客很精彩！！">
+<meta property="og:description" content="##invalidate() 、postInvalidate()、requestLayout() 总结  ##1、invalidate()  Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-21T02:22:08.266Z">
+<meta property="og:updated_time" content="2018-05-23T10:55:07.353Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="个人博客搭建详解（Windows和Mac通用版）">
-<meta name="twitter:description" content="我是一个小帅哥，我的博客很精彩！！">
+<meta name="twitter:title" content="UI刷新绘制">
+<meta name="twitter:description" content="##invalidate() 、postInvalidate()、requestLayout() 总结  ##1、invalidate()  Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/20/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/23/UI刷新绘制/"/>
 
 
 
 
 
-  <title>个人博客搭建详解（Windows和Mac通用版） | My_blog</title>
+  <title>UI刷新绘制 | My_blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/20/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/UI刷新绘制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhangy">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">个人博客搭建详解（Windows和Mac通用版）</h1>
+          <h1 class="post-title" itemprop="name headline">UI刷新绘制</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-20T18:37:57+08:00">
-                2018-05-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T18:54:32+08:00">
+                2018-05-23
               </time>
             
 
@@ -363,9 +363,20 @@
       
 
       
-        <blockquote>
-<p>我是一个小帅哥，我的博客很精彩！！</p>
+        <p>##invalidate() 、postInvalidate()、requestLayout() 总结</p>
+<blockquote>
+<p>##1、invalidate()</p>
 </blockquote>
+<p>Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用</p>
+<p>invalidate()是用来刷新View的，必须是在UI线程中进行工作。比如在修改某个View的显示时候，调用invalidate()才能重新绘制的界面。也就是说调用了这个方法，进行了重绘View树，即draw()过程。并且从头到尾并不会触发onMeasure()方法（控制大小用）</p>
+<blockquote>
+<p>##2、requestLayout()</p>
+</blockquote>
+<p>   他跟invalidate()相反，他只调用measure()和layout()过程，不会调用draw()。<br>   比如说，ScrollView中LinearLayout,LinearLayout里面有纵向排列的textView和ImageView,那么假如ImageView的长宽发生了改变，现在想手机里面立马显示这个效果的话，就可以调用imageView.requestLayout(),这样的话ScrollView回重新执行onMeasure()方法确定控件的大小，然后在确定自己的宽高，最后执行layout()方法，对所有的子控件进行定位</p>
+<blockquote>
+<p>##3、postInvalidate()</p>
+</blockquote>
+<p>  postInvalidate与invalidate()的方法区别是：postInvalidate()方法可以在UI线程中执行，也可以在工作线程中执行。但是从重绘速率上讲，Invalidate()的效率要高一些。</p>
 
       
     </div>
@@ -427,15 +438,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/23/Scroller/" rel="next" title="Android Scroller 完全解析">
+                <i class="fa fa-chevron-left"></i> Android Scroller 完全解析
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/21/toolbar_theme_poptheme/" rel="prev" title="android中Toolbar中app:theme与app:popupTheme相关属性的详解">
-                android中Toolbar中app:theme与app:popupTheme相关属性的详解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
