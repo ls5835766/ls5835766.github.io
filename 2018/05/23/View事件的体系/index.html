@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://img-blog.csdn.net/20151205110240614">
 <meta property="og:image" content="https://img-blog.csdn.net/20151205122157577?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 <meta property="og:image" content="https://img-blog.csdn.net/20151209191025129">
-<meta property="og:updated_time" content="2018-05-22T18:31:36.718Z">
+<meta property="og:updated_time" content="2018-05-23T03:40:07.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="View的基础知识">
 <meta name="twitter:description" content="View的事件体系整体上理解还是比较简单的，但是有很多的细节，这些细节很容易被忽略掉。所以写下这篇文章来加深记忆。 1、View事件的相关基础 View是一种界面层的控件的一种抽象，它代表了一个控件。ViewGroup为控件组。View中也可以包含多个控件，形成控件树。ImageButton是一个View，LinearLayout是一个View，也是一个ViewGroup。 2、View的坐标以及">
@@ -403,7 +403,7 @@
 onTouch方法是viewOnTouchListener()接口定义的方法。
 当一个View绑定了OnTouchListener后，当touch事件触发时，就会调用onTouch方法
 （当把手放到View上后，onTouch方法被一遍一遍的调用）
-2、o&apos;nTouchEvent
+2、onTouchEvent
 onTouchEvent是override的Activity的方法
 重新Activity的onTouchEvent方法后，当屏幕有touch事件的时候，此方法就会被调用
 （当手放到Activity上时，onTouchEvent方法就会一遍一遍的被调用）
@@ -415,7 +415,7 @@ onTouchEvent是override的Activity的方法
 当onTouch返回的是false的时候，表示touch事件没有被tv完全处理，onTouch返回以后，touch事件会被传递给Activity，onTouchEvent方法会被调用
 </code></pre><p>上面啰嗦了那么多，主要就是为了给下面做一些区别，加深我们的印象</p>
 <p>GesturDetector主要是通过它的onTouchEvent方法实现不同手势的识别。虽然能识别手势，但是不同的手势要怎么处理是程序员所要干的事情</p>
-<h5 id="具体的回掉法详见View的事件体系"><a href="#具体的回掉法详见View的事件体系" class="headerlink" title="具体的回掉法详见View的事件体系"></a>具体的回掉法详见<a href="https://blog.csdn.net/zizidemenghanxiao/article/details/50184295" target="_blank" rel="noopener">View的事件体系</a></h5>
+<h5 id="View的事件体系"><a href="#View的事件体系" class="headerlink" title="View的事件体系"></a><a href="https://blog.csdn.net/zizidemenghanxiao/article/details/50184295" target="_blank" rel="noopener">View的事件体系</a></h5><h5 id="Android-手势检测实战-打造支持缩放平移的图片预览效果（上）"><a href="#Android-手势检测实战-打造支持缩放平移的图片预览效果（上）" class="headerlink" title="Android 手势检测实战 打造支持缩放平移的图片预览效果（上）"></a><a href="https://blog.csdn.net/lmj623565791/article/details/39474553" target="_blank" rel="noopener">Android 手势检测实战 打造支持缩放平移的图片预览效果（上）</a></h5><h5 id="Android-手势检测实战-打造支持缩放平移的图片预览效果（下）"><a href="#Android-手势检测实战-打造支持缩放平移的图片预览效果（下）" class="headerlink" title="Android 手势检测实战 打造支持缩放平移的图片预览效果（下）"></a><a href="https://blog.csdn.net/lmj623565791/article/details/39480503" target="_blank" rel="noopener">Android 手势检测实战 打造支持缩放平移的图片预览效果（下）</a></h5>
       
     </div>
     
@@ -630,7 +630,7 @@ onTouchEvent是override的Activity的方法
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、View事件的相关基础"><span class="nav-number">1.</span> <span class="nav-text">1、View事件的相关基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、View的坐标以及高"><span class="nav-number">2.</span> <span class="nav-text">2、View的坐标以及高</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1视图坐标系"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">2.1视图坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示："><span class="nav-number">2.0.0.1.1.</span> <span class="nav-text">在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、Android坐标系（以屏幕的左上角为原点）"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.2、Android坐标系（以屏幕的左上角为原点）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-MotionEvent"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">3.1 MotionEvent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2、TouchSlop"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">3.2、TouchSlop</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、GestureDetector手势检测"><span class="nav-number">3.</span> <span class="nav-text">5、GestureDetector手势检测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#具体的回掉法详见View的事件体系"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">具体的回掉法详见View的事件体系</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、View事件的相关基础"><span class="nav-number">1.</span> <span class="nav-text">1、View事件的相关基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、View的坐标以及高"><span class="nav-number">2.</span> <span class="nav-text">2、View的坐标以及高</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1视图坐标系"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">2.1视图坐标系</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示："><span class="nav-number">2.0.0.1.1.</span> <span class="nav-text">在Android系统中，一个子View在ViewGroup中显示的区域由top、right、bottom、left四个属性确定。它们分别确定四条边，如下图所示：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2、Android坐标系（以屏幕的左上角为原点）"><span class="nav-number">2.0.1.</span> <span class="nav-text">2.2、Android坐标系（以屏幕的左上角为原点）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-MotionEvent"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">3.1 MotionEvent</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2、TouchSlop"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">3.2、TouchSlop</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、GestureDetector手势检测"><span class="nav-number">3.</span> <span class="nav-text">5、GestureDetector手势检测</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#View的事件体系"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">View的事件体系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Android-手势检测实战-打造支持缩放平移的图片预览效果（上）"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">Android 手势检测实战 打造支持缩放平移的图片预览效果（上）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Android-手势检测实战-打造支持缩放平移的图片预览效果（下）"><span class="nav-number">3.0.0.3.</span> <span class="nav-text">Android 手势检测实战 打造支持缩放平移的图片预览效果（下）</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
