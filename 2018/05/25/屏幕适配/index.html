@@ -79,20 +79,23 @@
 
 
 
-<meta name="description" content="使用xml定义Menu理论上而言,使用xml和java代码都可以创建Menu.但是在实际开发中，往往通过xml定义Menu,这样做的好处有  使用xml可以获得更清晰的菜单结构 将菜单内容与应用逻辑代码分离 可以使用应用资源框架，为不同的平台版本、屏幕尺寸创建最合适的菜单  12345678910111213141516171819202122&amp;lt;menu xmlns:android=&amp;quo">
+<meta name="description" content="Android屏幕适配先来解释一些相关的名词： 屏幕尺寸：也就是我们所说的某某手机是几寸屏，比如HTC one V这款手机是3.7寸的，这里寸所说的是英寸(inch),国际上习惯使用的单位 l inch = 2.54cm, 3.7寸指的就是屏幕的对角线的长度  屏幕分辨率：指的是屏幕的宽和高的像素点数，比如HTC one V是480*800  屏幕密度：每英寸的像素数，比如HTC one V,是2">
 <meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Menu的用法">
-<meta property="og:url" content="http://yoursite.com/2018/05/22/Menu/index.html">
+<meta property="og:title" content="Android屏幕适配">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/屏幕适配/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="使用xml定义Menu理论上而言,使用xml和java代码都可以创建Menu.但是在实际开发中，往往通过xml定义Menu,这样做的好处有  使用xml可以获得更清晰的菜单结构 将菜单内容与应用逻辑代码分离 可以使用应用资源框架，为不同的平台版本、屏幕尺寸创建最合适的菜单  12345678910111213141516171819202122&amp;lt;menu xmlns:android=&amp;quo">
+<meta property="og:description" content="Android屏幕适配先来解释一些相关的名词： 屏幕尺寸：也就是我们所说的某某手机是几寸屏，比如HTC one V这款手机是3.7寸的，这里寸所说的是英寸(inch),国际上习惯使用的单位 l inch = 2.54cm, 3.7寸指的就是屏幕的对角线的长度  屏幕分辨率：指的是屏幕的宽和高的像素点数，比如HTC one V是480*800  屏幕密度：每英寸的像素数，比如HTC one V,是2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://img-blog.csdn.net/20180522165955127?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5neURE/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2018-05-22T01:01:45.113Z">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201407/06/1404619415_4362.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201407/06/1404628118_8256.png">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201407/06/1404643397_4717.jpg">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201407/06/1404647552_9043.png">
+<meta property="og:updated_time" content="2018-05-25T01:16:04.944Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Menu的用法">
-<meta name="twitter:description" content="使用xml定义Menu理论上而言,使用xml和java代码都可以创建Menu.但是在实际开发中，往往通过xml定义Menu,这样做的好处有  使用xml可以获得更清晰的菜单结构 将菜单内容与应用逻辑代码分离 可以使用应用资源框架，为不同的平台版本、屏幕尺寸创建最合适的菜单  12345678910111213141516171819202122&amp;lt;menu xmlns:android=&amp;quo">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20180522165955127?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5neURE/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:title" content="Android屏幕适配">
+<meta name="twitter:description" content="Android屏幕适配先来解释一些相关的名词： 屏幕尺寸：也就是我们所说的某某手机是几寸屏，比如HTC one V这款手机是3.7寸的，这里寸所说的是英寸(inch),国际上习惯使用的单位 l inch = 2.54cm, 3.7寸指的就是屏幕的对角线的长度  屏幕分辨率：指的是屏幕的宽和高的像素点数，比如HTC one V是480*800  屏幕密度：每英寸的像素数，比如HTC one V,是2">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201407/06/1404619415_4362.jpg">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/22/Menu/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/屏幕适配/"/>
 
 
 
 
 
-  <title>Android Menu的用法 | My_blog</title>
+  <title>Android屏幕适配 | My_blog</title>
   
 
 
@@ -265,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/22/Menu/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/屏幕适配/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhangy">
@@ -282,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Android Menu的用法</h1>
+          <h1 class="post-title" itemprop="name headline">Android屏幕适配</h1>
         
 
         <div class="post-meta">
@@ -294,8 +297,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-22T02:08:49+08:00">
-                2018-05-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-25T09:15:36+08:00">
+                2018-05-25
               </time>
             
 
@@ -365,42 +368,48 @@
       
 
       
-        <h2 id="使用xml定义Menu"><a href="#使用xml定义Menu" class="headerlink" title="使用xml定义Menu"></a>使用xml定义Menu</h2><p>理论上而言,使用xml和java代码都可以创建Menu.但是在实际开发中，往往通过xml定义Menu,这样做的好处有</p>
-<ul>
-<li>使用xml可以获得更清晰的菜单结构</li>
-<li>将菜单内容与应用逻辑代码分离</li>
-<li>可以使用应用资源框架，为不同的平台版本、屏幕尺寸创建最合适的菜单</li>
+        <h1 id="Android屏幕适配"><a href="#Android屏幕适配" class="headerlink" title="Android屏幕适配"></a>Android屏幕适配</h1><h4 id="先来解释一些相关的名词："><a href="#先来解释一些相关的名词：" class="headerlink" title="先来解释一些相关的名词："></a>先来解释一些相关的名词：</h4><ul>
+<li><p>屏幕尺寸：也就是我们所说的某某手机是几寸屏，比如HTC one V这款手机是3.7寸的，这里寸所说的是英寸(inch),国际上习惯使用的单位</p>
+<pre><code>l inch = 2.54cm, 3.7寸指的就是屏幕的对角线的长度
+</code></pre></li>
+<li><p>屏幕分辨率：指的是屏幕的宽和高的像素点数，比如HTC one V是480*800</p>
+</li>
+<li><p>屏幕密度：每英寸的像素数，比如HTC one V,是252px/inch</p>
+</li>
+<li><p>px：像素。一块显示屏是由很多的光点组成的，每一个光点就是一个像素。由于这些光点很小很密，想想看，在上面提到的3.7寸的手机上，横向有480个光点，纵向有800个光点，所以显示出来的文字或者图片才会细腻平滑</p>
+</li>
+<li><p>ppi: 和屏幕密度一个意思</p>
+</li>
+<li><p>dpi: 每英寸的点数。在电子显示的范畴内它和PPI是一个意思。只有在打印时这个缩写才有意义。在打印领域不存在PPI的叫法，只说DPI,它表示打印机每英寸打印几个像素点。宽和高在同样的像素下，dpi越大，打印出来的图案越小。</p>
+</li>
+<li><p>dip: 或者叫dp,这是Android开发的一种度量，称作屏幕无关像素。它不表示任何具体的长度或者像素点，这个值只有在具体屏幕密度的手机上，才会被转换为具体的像素值。这个时候才会有实际意义。具体怎么转换，下面进行讲解</p>
+</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;item android:id=&quot;@+id/option_normal_1&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_vpn_key_white_24dp&quot;</span><br><span class="line">        android:title=&quot;普通菜单1&quot;</span><br><span class="line">        app:showAsAction=&quot;ifRoom&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;item android:id=&quot;@+id/option_normal_2&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_email_white_24dp&quot;</span><br><span class="line">        android:title=&quot;普通菜单2&quot;</span><br><span class="line">        app:showAsAction=&quot;always&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;item android:id=&quot;@+id/option_normal_3&quot;</span><br><span class="line">        android:icon=&quot;@mipmap/ic_vpn_key_white_24dp&quot;</span><br><span class="line">        android:title=&quot;普通菜单3&quot;</span><br><span class="line">        app:showAsAction=&quot;withText|always&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;item android:id=&quot;@+id/option_normal_4&quot;</span><br><span class="line">        android:title=&quot;普通菜单4&quot;</span><br><span class="line">        app:showAsAction=&quot;never&quot;/&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>定义Menu,我们首先要在res文件下新建menu文件夹，它将用于存储与Menu相关的XML文件<br>我们可以使用menu 、item、group三种XML元素定义Menu。</p>
-</blockquote>
-<pre><code>menu是菜单项的容器。menu元素必须是该文件的根节点，并且能够包含一个或多个item和group元素。
-item是菜单项，用于定义MenuItem，可以嵌套menu元素，以便创建子菜单。
-group是item元素的不可见容器（可选）。可以使用它对菜单项进行分组，使一组菜单项共享可用性和可见性等属性。
-</code></pre><blockquote>
-<p>其中，item是我们主要需要关注的元素，它的常见属性如下：</p>
-</blockquote>
-<pre><code>android:id：菜单项(MenuItem)的唯一标识
-android:icon：菜单项的图标（可选）
-android:title：菜单项的标题（必选）
-android:showAsAction：指定菜单项的显示方式。常用的有ifRoom、never、always、withText，多个属性值之间可以使用|隔开。
-</code></pre><p>可以看到，我们在XML文件中定义了四个普通的菜单项。同时，每一个<item>都有一个独特的showAsAction属性。</item></p>
-<p>我们需要知道，菜单栏中的菜单项会分为两个部分。一部分可以直接在菜单栏中看见，我们可以称之为常驻菜单；另一部分会被集中收纳到溢出菜单中（就是菜单栏右侧的小点状图标）。一般情况下，常驻菜单项以图标形式显示（需要定义icon属性），而溢出菜单项则以文字形式显示（通过title属性定义）。showAsAction的差异如下所示：</p>
-<pre><code>always：菜单项永远不会被收纳到溢出菜单中，因此在菜单项过多的情况下可能超出菜单栏的显示范围。
-ifRoom：在空间足够时，菜单项会显示在菜单栏中，否则收纳入溢出菜单中。
-withText：无论菜单项是否定义了icon属性，都只会显示它的标题，而不会显示图标。使用这种方式的菜单项默认会被收纳入溢出菜单中。
-never：菜单项永远只会出现在溢出菜单中。
-</code></pre><h2 id="现在我们已经在XML文件中将Menu定义完毕了，接下来还需要在Java代码中进行加载，"><a href="#现在我们已经在XML文件中将Menu定义完毕了，接下来还需要在Java代码中进行加载，" class="headerlink" title="现在我们已经在XML文件中将Menu定义完毕了，接下来还需要在Java代码中进行加载，"></a>现在我们已经在XML文件中将Menu定义完毕了，接下来还需要在Java代码中进行加载，</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">  public boolean onCreateOptionsMenu(Menu menu) &#123;</span><br><span class="line">      getMenuInflater().inflate(R.menu.main_menu_home, menu);</span><br><span class="line">      return true;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  @Override</span><br><span class="line">  public boolean onOptionsItemSelected(MenuItem item) &#123;</span><br><span class="line">      switch (item.getItemId()) &#123;</span><br><span class="line">          case R.id.option_normal_1:</span><br><span class="line">              ToastUtil.showToast(this,&quot;二维码扫描&quot;);</span><br><span class="line">              break;</span><br><span class="line">          case R.id.option_normal_2:</span><br><span class="line">              ActivityUtils.startActivity(SelectFollowActivity.class);</span><br><span class="line">              break;</span><br><span class="line">          default:</span><br><span class="line">              break;</span><br><span class="line">      &#125;</span><br><span class="line">      return super.onOptionsItemSelected(item);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>可以看见，我们在Activity中重写了onCreateOptionsMenu方法，在这个方法中完成加载Menu资源的操作，关键代码如下：</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">getMenuInflater().inflate(R.menu.main_menu_home, menu);</span><br><span class="line">return true;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，这个方法必须返回true，否则Menu将不会显示。</p>
-<p>在onOptionsItemSelected方法中，我们实现了菜单项的点击监听。可以看见，这里是通过MenuItem的id进行区分的，对应着XML文件中<item>的id属性。每次处理完点击事件后，记得要返回true，对系统而言这次点击事情才算是真正结束了。此外，在default分支下，推荐调用父类的默认实现，即super.onOptionsItemSelected(item)，避免在多个Activity使用公有父类的情况下菜单项点击事件无法触发（下文会详细解释）。</item></p>
-<p>效果截图：</p>
-<p><img src="https://img-blog.csdn.net/20180522165955127?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3poYW5neURE/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="menu.png"></p>
-
+<p>下面贴出传说中的HTC one V的截图，带了相关尺寸的标注：（一个很旧的手机，但是在480*800分辨率届很有代表性）<br><img src="http://img.my.csdn.net/uploads/201407/06/1404619415_4362.jpg" alt=""></p>
+<p>对于一个新发布的手机，厂商一般会指明3个基本的参数：屏幕尺寸、分辨率和ppi。 根据这三个值我们就能算出这个显示屏的长和宽各式多少。<br>比如：<br>屏幕宽 = 480/252 ≈ 1.9 inch</p>
+<p>屏幕高 = 800/252 ≈ 3.17 inch</p>
+<p>注： </p>
+<p>对于显示器来说， 横向和纵向的密度是一样的， 也就是说，在屏幕上任意截取一个正方形，它的横向像素数=纵向像素数。</p>
+<p>另外我们关心的一点是，这个手机的屏幕密度，对应的drawble目录是哪一个。 这个我们很容易知道 ，是hdpi目录。（怎么就很容易知道了！？ 别急别急， 下面就会说到）</p>
+<p>这样， 一个手机和显示相关的参数我们就了然于胸了。</p>
+<p>#####好了，我们进入正题。;-)</p>
+<p>Android项目的res目录下一般加上我们自己创建的，会有6个目录，分别是：drawble  drawble-ldpi  drawble-mdpi  drawble-hdpi  drawble-xhdpi  drawble-xxhdpi， 这里就不包括更为特殊的drawble目录了，（比如drawlbe-land-hdpi， 表示水平方向的高分辨率的图片，这些都目录不管多么长，它们都是按一丁点规律匹配的， 我们的目的是， 从个别中发现规律，从而应用到整体）</p>
+<p>当一个apk运行起来时，Android系统会根据其所运行的手机的屏幕密度去相对应的图片文件夹里找指定名称的图片。 注意， 先去哪个目录里找，完全是根据这个手机的屏幕密度决定的。</p>
+<p><img src="http://img.my.csdn.net/uploads/201407/06/1404628118_8256.png" alt=""></p>
+<p>其中：注意两点<br>1、中等分辨率，即mdpi的屏幕密度是160，它是标准的参考密度。所以计算比例的时候它的比值是1，其他屏幕密度的参考比例都是以这个为依据的<br>2、默认的drawable文件，这个文件存放图片时与mdpi文件是一样的效果。不过一般性的放自定义的selector或者.9的图片</p>
+<p>现在我们来看， HTC one V手机的屏幕密度是252ppi， 那距离哪一个最靠近呢， 就是hdpi了。 所以当apk运行在这个手机上时，首先会去这个目录找图片。</p>
+<h3 id="Android图片的选择策略"><a href="#Android图片的选择策略" class="headerlink" title="Android图片的选择策略"></a>Android图片的选择策略</h3><p>上面说到，如果屏幕对应的文件没有要找的图片的时候，怎么办。这是很常见的一个问题。我们开发项目的时候，我们不会为每一个级别的屏幕去切一套图片。那样做的话，只会让apk很大。所以一般性的图片我们只切一两个典型密度屏幕的图片。但是apk是有可能会从ldpi到xxdpi的各种级别的手机上，这个时候就要根据策略去寻找图片</p>
+<p>####Android系统寻找图片的步骤是这样的：<br>1、去屏幕密度对应的目录去找，如果找到就拿来用<br>2、如果没有找到，就去比这个密度高一级的目录里面去找，如果找到就拿来用<br>3、如果没找到，就继续往上找，以此类推<br>4、如果到了xxhdpi目录的时候还没有找到，就会比自身屏幕密度低一级的目录去找，如果低一级的目录&gt;=hdpi,找到了就拿来用<br>5、如果没找到， 就去mdpi目录去找， 如果找到了，就拿来用。<br>6、如果没找到，就去默认的drawble目录里去找， 如果找到了就拿来用。<br>7、如果没找到，再去最低的ldpi目录里去找。如果找到了，就拿来用。<br>8、如果没找到， 那就是没找到了， 图片无法显示。（不过一般不会出现这种现象，因为如果每个目录都没有这个图片的话，你是编译不过的）</p>
+<p>这里有两点需要注意<br>1、首先会去比自己密度高的目录里面去找，这是因为系统相信。密度比较高的的目录里面会放置分辨率比较大的图片，这样的话，图片会被缩小，但是同时显示的效果也不会失真。但是如果去低一级的目录去找的话，找到的图片就会被放大，这样的话，图片就会被拉扯的很模糊</p>
+<pre><code>e.g. 同一张图片，你在mdpi和xxhdpi目录各放了一份， 这个应用你现在运行在hdpi的手机上， 那应用会选择哪张图片呢。答案是xxhdpi目录里的。即便hdpi离mdpi更近一点！
+</code></pre><p>2、如果在mdpi里找不到是不会直接去ldpi里找的， 而是先去默认的drawble目录里找，这是drawble目录和drawble-mdpi是一个级别的</p>
+<p>下面用一张图来表示流程<br><img src="http://img.my.csdn.net/uploads/201407/06/1404643397_4717.jpg" alt=""></p>
+<h3 id="Android系统对图片的缩放规则"><a href="#Android系统对图片的缩放规则" class="headerlink" title="Android系统对图片的缩放规则"></a>Android系统对图片的缩放规则</h3><p>上文中提到如果在手机对应的目录没有找到图片，就会按照一定的策略去其他目录找，那找到了以后就原图显示么？ 非也。</p>
+<p>对于放在不同目录下的图片， 系统会按照一定比例对原始的图片进行放大或者缩小， 具体的放大缩小比例可参考下表， 图片所在目录和对应的屏幕密度是相同时图片缩放比例为1，也就是原图显示，而横向的比例表示分别放在该密度手机上运行时图片被缩放的比例。</p>
+<p>对原始图片的缩放倍数。</p>
+<p><img src="http://img.my.csdn.net/uploads/201407/06/1404647552_9043.png" alt=""></p>
+<p>上表几点值得注意的地方：<br>①， drawable目录和drawable-mdpi目录和dp到px的转换关系是一样的。<br>②，当你放一个120px<em>180px的图片到drawable-hdpi目录，如果此应用运行在一个xhdpi的手机上，则这个图片会被拉扯到160px</em>240px。<br>③， 最后一行dp-&gt;px， 说明了在代码或者布局文件中声明一个dp值， 这个值在不同屏幕密度的手机中会被乘以不同的倍数。 比如你在布局文件中写了一个宽和高分别为120dp和180dp的LinearLayout， 那么当这个应用运行在xhdpi的手机上时（比如上面那个常见手机表中的中兴U985手机），它的实际像素就会被转换为240px<em>360px。 如果运行在ldpi的手机上，就变成了90px</em>135px。 但是在这两个手机中显示的区域大小从肉眼看，是一模一样大的。（这点作为后面内容的一个引子，“看起来”一样大，这就是Android的一个神奇的地方）</p>
+<h4 id="Android屏幕适配-1"><a href="#Android屏幕适配-1" class="headerlink" title="Android屏幕适配"></a><a href="https://blog.csdn.net/xiebudong/article/details/37040263" target="_blank" rel="noopener">Android屏幕适配</a></h4>
       
     </div>
     
@@ -461,8 +470,8 @@ never：菜单项永远只会出现在溢出菜单中。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/21/toolbar_theme_poptheme/" rel="next" title="android中Toolbar中app:theme与app:popupTheme相关属性的详解">
-                <i class="fa fa-chevron-left"></i> android中Toolbar中app:theme与app:popupTheme相关属性的详解
+              <a href="/2018/05/23/UI刷新绘制/" rel="next" title="UI刷新绘制">
+                <i class="fa fa-chevron-left"></i> UI刷新绘制
               </a>
             
           </div>
@@ -470,10 +479,6 @@ never：菜单项永远只会出现在溢出菜单中。
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/23/View事件的体系/" rel="prev" title="View的基础知识">
-                View的基础知识 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -619,7 +624,7 @@ never：菜单项永远只会出现在溢出菜单中。
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用xml定义Menu"><span class="nav-number">1.</span> <span class="nav-text">使用xml定义Menu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在我们已经在XML文件中将Menu定义完毕了，接下来还需要在Java代码中进行加载，"><span class="nav-number">2.</span> <span class="nav-text">现在我们已经在XML文件中将Menu定义完毕了，接下来还需要在Java代码中进行加载，</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android屏幕适配"><span class="nav-number">1.</span> <span class="nav-text">Android屏幕适配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#先来解释一些相关的名词："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">先来解释一些相关的名词：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android图片的选择策略"><span class="nav-number">1.0.1.</span> <span class="nav-text">Android图片的选择策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Android系统对图片的缩放规则"><span class="nav-number">1.0.2.</span> <span class="nav-text">Android系统对图片的缩放规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Android屏幕适配-1"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">Android屏幕适配</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

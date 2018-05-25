@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##invalidate() 、postInvalidate()、requestLayout() 总结  ##1、invalidate()  Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是">
+<meta name="description" content="invalidate() 、postInvalidate()、requestLayout() 总结 1、invalidate() Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是在UI线程中">
 <meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UI刷新绘制">
 <meta property="og:url" content="http://yoursite.com/2018/05/23/UI刷新绘制/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="##invalidate() 、postInvalidate()、requestLayout() 总结  ##1、invalidate()  Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是">
+<meta property="og:description" content="invalidate() 、postInvalidate()、requestLayout() 总结 1、invalidate() Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是在UI线程中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-23T10:55:07.353Z">
+<meta property="og:updated_time" content="2018-05-23T10:58:43.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UI刷新绘制">
-<meta name="twitter:description" content="##invalidate() 、postInvalidate()、requestLayout() 总结  ##1、invalidate()  Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是">
+<meta name="twitter:description" content="invalidate() 、postInvalidate()、requestLayout() 总结 1、invalidate() Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是在UI线程中">
 
 
 
@@ -363,19 +363,15 @@
       
 
       
-        <p>##invalidate() 、postInvalidate()、requestLayout() 总结</p>
-<blockquote>
-<p>##1、invalidate()</p>
-</blockquote>
+        <h2 id="invalidate-、postInvalidate-、requestLayout-总结"><a href="#invalidate-、postInvalidate-、requestLayout-总结" class="headerlink" title="invalidate() 、postInvalidate()、requestLayout() 总结"></a>invalidate() 、postInvalidate()、requestLayout() 总结</h2><blockquote>
+<h2 id="1、invalidate"><a href="#1、invalidate" class="headerlink" title="1、invalidate()"></a>1、invalidate()</h2></blockquote>
 <p>Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用</p>
 <p>invalidate()是用来刷新View的，必须是在UI线程中进行工作。比如在修改某个View的显示时候，调用invalidate()才能重新绘制的界面。也就是说调用了这个方法，进行了重绘View树，即draw()过程。并且从头到尾并不会触发onMeasure()方法（控制大小用）</p>
 <blockquote>
-<p>##2、requestLayout()</p>
-</blockquote>
+<h2 id="2、requestLayout"><a href="#2、requestLayout" class="headerlink" title="2、requestLayout()"></a>2、requestLayout()</h2></blockquote>
 <p>   他跟invalidate()相反，他只调用measure()和layout()过程，不会调用draw()。<br>   比如说，ScrollView中LinearLayout,LinearLayout里面有纵向排列的textView和ImageView,那么假如ImageView的长宽发生了改变，现在想手机里面立马显示这个效果的话，就可以调用imageView.requestLayout(),这样的话ScrollView回重新执行onMeasure()方法确定控件的大小，然后在确定自己的宽高，最后执行layout()方法，对所有的子控件进行定位</p>
 <blockquote>
-<p>##3、postInvalidate()</p>
-</blockquote>
+<h2 id="3、postInvalidate"><a href="#3、postInvalidate" class="headerlink" title="3、postInvalidate()"></a>3、postInvalidate()</h2></blockquote>
 <p>  postInvalidate与invalidate()的方法区别是：postInvalidate()方法可以在UI线程中执行，也可以在工作线程中执行。但是从重绘速率上讲，Invalidate()的效率要高一些。</p>
 
       
@@ -448,6 +444,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/05/25/屏幕适配/" rel="prev" title="Android屏幕适配">
+                Android屏幕适配 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -498,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,7 +523,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -573,6 +582,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#invalidate-、postInvalidate-、requestLayout-总结"><span class="nav-number">1.</span> <span class="nav-text">invalidate() 、postInvalidate()、requestLayout() 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、invalidate"><span class="nav-number">2.</span> <span class="nav-text">1、invalidate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、requestLayout"><span class="nav-number">3.</span> <span class="nav-text">2、requestLayout()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、postInvalidate"><span class="nav-number">4.</span> <span class="nav-text">3、postInvalidate()</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
