@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="实用,个人博客," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="##1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 ###Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态">
+<meta name="keywords" content="实用,个人博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dagger2入门（一）">
+<meta property="og:url" content="http://yoursite.com/2018/05/28/dagger2/index.html">
+<meta property="og:site_name" content="My_blog">
+<meta property="og:description" content="##1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 ###Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1818011-e9598e0d6581d92f.jpeg?imageMogr2/auto-orient/">
+<meta property="og:updated_time" content="2018-05-28T01:35:19.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Dagger2入门（一）">
+<meta name="twitter:description" content="##1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 ###Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'DIY-green'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/28/dagger2/"/>
+
+
+
+
+
+  <title>Dagger2入门（一） | My_blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">My_blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/28/dagger2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhangy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My_blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Dagger2入门（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-28T09:34:28+08:00">
+                2018-05-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##1、Dagger2是什么？<br>  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？<br>  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架</p>
+<p>###Dagger2介绍<br>  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态生成的代码</p>
+<blockquote>
+<p>Dagger2主要分为三个部分</p>
+</blockquote>
+<pre><code>1、依赖提供方Module,负责提供依赖中所需要的对象，实际编码中类似于工厂类
+2、依赖需求方实例，他在实际编码中对应业务Activity.当你在Activity中需要某个对象的时候，你只需要声明就行了
+3、依赖注入的组件Component,负责将对象注入在依赖需求方里面，它在实际编码中是一个接口，编译Dagger2会自动为它生成一个实现类
+</code></pre><blockquote>
+<p>Dagger2的主要工作流程</p>
+</blockquote>
+<pre><code>1、将依赖需求房（Activity里面声明）传入给Component的实现类
+2、Component实现类会根据依赖需求方实例中依赖声明，来确定实例需要依赖哪些对象
+3、确定依赖对象后，Component会在与自己关联的Module类中查找有没有提供这些依赖对象的方法,有的话就将Module类中提供的对象设置到依赖需求方实例中
+</code></pre><h2 id="2、实例"><a href="#2、实例" class="headerlink" title="2、实例"></a>2、实例</h2><blockquote>
+<p>在项目下的build.gradle文件中添加apt插件:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">// Top-level build file where you can add configuration options common to all sub-projects/modules.</span><br><span class="line"></span><br><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        classpath &apos;com.android.tools.build:gradle:2.2.0&apos;</span><br><span class="line"></span><br><span class="line">        // 添加android-apt 插件</span><br><span class="line">        classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;</span><br><span class="line"></span><br><span class="line">        // NOTE: Do not place your application dependencies here; they belong</span><br><span class="line">        // in the individual module build.gradle files</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在app目录的build.gradle文件中添加:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//应用apt插件</span><br><span class="line">apply plugin: &apos;com.neenbedankt.android-apt&apos;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    ...</span><br><span class="line">    //引入dagger2</span><br><span class="line">    compile &apos;com.google.dagger:dagger:2.4&apos;</span><br><span class="line">    apt &apos;com.google.dagger:dagger-compiler:2.4&apos;</span><br><span class="line">    //java注解</span><br><span class="line">    provided &apos;org.glassfish:javax.annotation:10.0-b28&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="编写布料类Cloth"><a href="#编写布料类Cloth" class="headerlink" title="编写布料类Cloth"></a>编写布料类Cloth</h2><p>写一个Cloth类用作依赖对象,它包含一个color属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Cloth &#123;</span><br><span class="line">    private String color;</span><br><span class="line"></span><br><span class="line">    public String getColor() &#123;</span><br><span class="line">        return color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setColor(String color) &#123;</span><br><span class="line">        this.color = color;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return color + &quot;布料&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="书写Module类"><a href="#书写Module类" class="headerlink" title="书写Module类"></a>书写Module类</h2><p>现在的需求是MainActivity中需要使用到Cloth对象，所以我们要为MainActivity书写一个Module类用来提供Cloth对象，相当于创建一个提供商</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">public class MainModule &#123;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    public Cloth getCloth() &#123;</span><br><span class="line">        Cloth cloth = new Cloth();</span><br><span class="line">        cloth.setColor(&quot;红色&quot;);</span><br><span class="line">        return cloth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>@Module：表面该类是Module类，Dagger2用来识别的
+@Provides:声明Module类中，该方法是依赖对象的
+在一个方法中声明@Provides注解，就相当于创建了一条生产线，这个生产线的产物就是该方法的返回值。有了这条生产线，供应商就能提供这种类型的商品，当商店老板发现有人需要这种类型的商品时，供应商就可以提供给它了
+</code></pre><h2 id="书写Component接口"><a href="#书写Component接口" class="headerlink" title="书写Component接口"></a>书写Component接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules=MainModule.class)</span><br><span class="line">public interface MainComponent &#123;</span><br><span class="line">    void inject(MainActivity mainActivity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>和Module类一样，Component也需要注解声明的，那个注解就是@Component。<br>@Component注解的作用</p>
+<pre><code>@Component注解有两个属性，分别是modules和dependcies.这两个属性的类型都是Class数组
+ 1、Modules :声明Component含有几个Moudle。当Component需要某个依赖的时候，就会通过这些Module类中对应的方法获取依赖对象。
+ MainComponent中只包含MainMoudle,所以令moudles=Maindule.class.这就相当于供应商和商店老板确定了合作关系
+
+ 2、dependencies ：声明Component类的依赖关系，这个下面在详细讲解
+</code></pre><p>接口中的那个方法的作用</p>
+<pre><code>我们现在之声明了Component类，但是我们要怎么将Component类和依赖需求方对象联合起来呢。这个就是那个方法的作用。这个方法可以将需求方的依赖对象传送到Component类中。Component类就会根据依赖需求方对象中声明的依赖关系来注入依赖需求方对象中所有的对象
+</code></pre><blockquote>
+<p>#####注意:<br>   本demo中,MainActivity中需要Cloth对象，所以我们通过inject方法将Activity的实例传入到依赖组件MainComponent中，依赖组件MainComponent就会从提供方MainMoudle中的getCloth方法中获取cloth实例，并将该实例赋值给依赖需求方MainActivity中的cloth字段，相当于你去商店的道路，没有这条路，你就无法去商店和老板说明你需要的东西。但是这里需要注意的是，inject方法的参数不能用父类来接收，例如本Demo中，如果inject的参数是Activity,那么Dagger2就会报错</p>
+</blockquote>
+<p>##在MainActivity中声明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private TextView tv;</span><br><span class="line">    @Inject</span><br><span class="line">    Cloth cloth;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        tv = (TextView) findViewById(R.id.tv);</span><br><span class="line"></span><br><span class="line">        MainComponent build = DaggerMainComponent.builder().mainModule(new MainModule()).build();</span><br><span class="line">        build.inject(this);</span><br><span class="line">        tv.setText(&quot;我现在有&quot; + cloth);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####上面代码有两处比较关键</p>
+<pre><code>1、声明依赖对象Cloth，就是在Cloth字段上添加@Inject注解，Dagger2中声明依赖对象都是通过@Inject注解的。
+注意：@Inject注解字段不能是private和protected
+
+2、通过dagger2自动生成的类来创建Component的实现类，创建时需要传入该ComPonent实现类所需要的Moudle类的实例。传入方法就是调用Moudle类类名首字母小写所对应的方法。这里我们通过Dagger2自动生成DaggerMainComponent类创建了。
+
+MainComponent的实例，相当于我们创建了一个实实在在的商店，不在是理论上的商店，但是创建商店一定要创建真是的供应商，所以创建Component实现类时一定要传入Moudle实例.(注意编写完Component接口后Dagger2并不会自动创建对应的类,需要我们点击Android Studio中bulid菜单下的Rebulid Poject选项,或者直接书写代码,编译时Dagger2就会帮你自动生成).
+
+再将MainActivity通过inject方法发送到MainComponent中，调用完inject方法后，你就会发现，MainActivity中的cloth字段已经被赋值，而且该cloth对应的就是我们在MainModule类的getCloth方法中创建的Cloth对象。
+</code></pre><p>####结果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/" alt=""></p>
+<h4 id="另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"><a href="#另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口" class="headerlink" title="另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"></a>另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口</h4><blockquote>
+<p>创建依赖类  shope</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Shoe &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    public Shoe() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;鞋子&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这次我们创建的方式和Cloth不一样了，我们在构造方法上声明了@Inject注解。<br>这个注解的作用：当Component所拥有的Module类找不到依赖需求方需要类型的提供方法的时候，Dagger就会检查该需要类型有没有@Inject声明的构造方法，有的话就用该构造方法创建一个<br>（相当于你去商店购买东西，你需要的东西商店的供应商不生产，商店老板只好去网上看看有没有你需要的东西，有的话就帮你网购一个）</p>
+<h4 id="在MainActivity中声明Shope"><a href="#在MainActivity中声明Shope" class="headerlink" title="在MainActivity中声明Shope"></a>在MainActivity中声明Shope</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    ...</span><br><span class="line">    @Inject</span><br><span class="line">    Shoe shoe;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        ...</span><br><span class="line">        tv.setText(&quot;我现在有&quot; + cloth + &quot;和&quot; + shoe);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="https://upload-images.jianshu.io/upload_images/1818011-e9598e0d6581d92f.jpeg?imageMogr2/auto-orient/" alt=""></p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p> 为什么不都用这种方法来声明呢，为什么要用Moudle类？<br> 这是因为项目中，我们会用到别人的jar包，我们无法修改别人的源码，就更别说在别人的代码上添加注解了，所以我们只能通过Module类来提供</p>
+<pre><code>Shope是在源码的构造方法上面添加@Inject
+而前面的代码是通过Module类引进进来的。
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Zhangy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Zhangy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实用/" rel="tag"># 实用</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/25/虹软人脸识别/" rel="next" title="ArcFace虹软Sdk集成Demo实现">
+                <i class="fa fa-chevron-left"></i> ArcFace虹软Sdk集成Demo实现
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhangy</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.jianshu.com/users/0ad0a0afc409/latest_articles" title="DIY-green简书" target="_blank">DIY-green简书</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2、实例"><span class="nav-number">1.</span> <span class="nav-text">2、实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写布料类Cloth"><span class="nav-number">2.</span> <span class="nav-text">编写布料类Cloth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写Module类"><span class="nav-number">3.</span> <span class="nav-text">书写Module类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写Component接口"><span class="nav-number">4.</span> <span class="nav-text">书写Component接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"><span class="nav-number">4.0.1.</span> <span class="nav-text">另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在MainActivity中声明Shope"><span class="nav-number">4.0.2.</span> <span class="nav-text">在MainActivity中声明Shope</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.1.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">4.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhangy</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
