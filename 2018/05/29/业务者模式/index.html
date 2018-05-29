@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="invalidate() 、postInvalidate()、requestLayout() 总结 1、invalidate() Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是在UI线程中">
+<meta name="description" content="业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。  客户端（Client）-表示层代码可以是UI java代码 业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问 查询服务（LookUp Service）-查">
 <meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="UI刷新绘制">
-<meta property="og:url" content="http://yoursite.com/2018/05/23/UI刷新绘制/index.html">
+<meta property="og:title" content="设计模式之业务代表模式">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/业务者模式/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="invalidate() 、postInvalidate()、requestLayout() 总结 1、invalidate() Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是在UI线程中">
+<meta property="og:description" content="业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。  客户端（Client）-表示层代码可以是UI java代码 业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问 查询服务（LookUp Service）-查">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-23T10:58:43.933Z">
+<meta property="og:updated_time" content="2018-05-29T06:19:05.282Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="UI刷新绘制">
-<meta name="twitter:description" content="invalidate() 、postInvalidate()、requestLayout() 总结 1、invalidate() Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用 invalidate()是用来刷新View的，必须是在UI线程中">
+<meta name="twitter:title" content="设计模式之业务代表模式">
+<meta name="twitter:description" content="业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。  客户端（Client）-表示层代码可以是UI java代码 业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问 查询服务（LookUp Service）-查">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/23/UI刷新绘制/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/29/业务者模式/"/>
 
 
 
 
 
-  <title>UI刷新绘制 | My_blog</title>
+  <title>设计模式之业务代表模式 | My_blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/23/UI刷新绘制/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/业务者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhangy">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">UI刷新绘制</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式之业务代表模式</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-23T18:54:32+08:00">
-                2018-05-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T14:18:19+08:00">
+                2018-05-29
               </time>
             
 
@@ -363,16 +363,27 @@
       
 
       
-        <h2 id="invalidate-、postInvalidate-、requestLayout-总结"><a href="#invalidate-、postInvalidate-、requestLayout-总结" class="headerlink" title="invalidate() 、postInvalidate()、requestLayout() 总结"></a>invalidate() 、postInvalidate()、requestLayout() 总结</h2><blockquote>
-<h2 id="1、invalidate"><a href="#1、invalidate" class="headerlink" title="1、invalidate()"></a>1、invalidate()</h2></blockquote>
-<p>Android提供Invalidate方法实现界面的刷新，但是Invalidate不能和直接在线程中调用，因为它是违背了单线程模型：AndroidUI操作并不是线程安全的，并且这些操作必须在UI线程中调用</p>
-<p>invalidate()是用来刷新View的，必须是在UI线程中进行工作。比如在修改某个View的显示时候，调用invalidate()才能重新绘制的界面。也就是说调用了这个方法，进行了重绘View树，即draw()过程。并且从头到尾并不会触发onMeasure()方法（控制大小用）</p>
-<blockquote>
-<h2 id="2、requestLayout"><a href="#2、requestLayout" class="headerlink" title="2、requestLayout()"></a>2、requestLayout()</h2></blockquote>
-<p>   他跟invalidate()相反，他只调用measure()和layout()过程，不会调用draw()。<br>   比如说，ScrollView中LinearLayout,LinearLayout里面有纵向排列的textView和ImageView,那么假如ImageView的长宽发生了改变，现在想手机里面立马显示这个效果的话，就可以调用imageView.requestLayout(),这样的话ScrollView回重新执行onMeasure()方法确定控件的大小，然后在确定自己的宽高，最后执行layout()方法，对所有的子控件进行定位</p>
-<blockquote>
-<h2 id="3、postInvalidate"><a href="#3、postInvalidate" class="headerlink" title="3、postInvalidate()"></a>3、postInvalidate()</h2></blockquote>
-<p>  postInvalidate与invalidate()的方法区别是：postInvalidate()方法可以在UI线程中执行，也可以在工作线程中执行。但是从重绘速率上讲，Invalidate()的效率要高一些。</p>
+        <p>业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。</p>
+<ul>
+<li>客户端（Client）-表示层代码可以是UI java代码</li>
+<li>业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问</li>
+<li>查询服务（LookUp Service）-查找服务对象负责获取相关的业务实现，并提供业务服务方法的访问</li>
+<li>业务服务 （Business Service）-查询服务接口，实现了该业务服务的实体类，提供了实际的业务实现逻辑</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>创建BusinessService接口<br>BusinessService.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface BusinessService&#123;</span><br><span class="line">   public void doProcessing();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>创建实体服务类<br>EJBService.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class EJBService implements BusinessService&#123;</span><br><span class="line">   </span><br><span class="line">   @Override</span><br><span class="line">   public void doProcessing()&#123;</span><br><span class="line">     System.out.print(&quot;Peocessing task by invoking EJB Service&quot;)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>JMSService.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pubilc class JMSService implements BusinessService&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">   public void doProcessing()&#123;</span><br><span class="line">     System.out.print(&quot;Peocessing task by invoking JMS Service&quot;)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>创建业务查询服务<br>BusinessLookUp.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class BusinessLookUp&#123;</span><br><span class="line">  public BusinessService getBusinessService(String serviceType)&#123;</span><br><span class="line">    if(serviceType.equalsIgnoreCase(&quot;EJB&quot;))&#123;</span><br><span class="line">         return new EJBService();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">         return new JMSService();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h3><p>创建业务代表<br>BusinessDelegate.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class BusinessDelegate&#123;</span><br><span class="line">   private BusinessLookUp lookUpService = new BusinessLookUp()</span><br><span class="line">   private BusinessService businessService;</span><br><span class="line">   private String serviceType;</span><br><span class="line">   </span><br><span class="line">   public vcid setServiceType(String serviceType)&#123;</span><br><span class="line">   this.serviceType = serviceType;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void doTask()&#123;</span><br><span class="line">   businessService = lookUpService.getBusinessService(serviceType);</span><br><span class="line">   businessService.doProcessing();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="步骤五"><a href="#步骤五" class="headerlink" title="步骤五"></a>步骤五</h3><p>创建客户端<br>Client.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pubilc class Client&#123;</span><br><span class="line">  private BusinessDelegate businessDelegate;</span><br><span class="line">  </span><br><span class="line">  public Client(BusinessDelegate businessDeegate)&#123;</span><br><span class="line">    this.businessDelegate = businessDelegate;</span><br><span class="line">  &#125;</span><br><span class="line">  public void doTask()&#123;</span><br><span class="line">   businessDelegate.doTask();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="步骤六"><a href="#步骤六" class="headerlink" title="步骤六"></a>步骤六</h3><p>使用businessDelegate和Client类演示业务代表模式<br>BusinessDelegatePatternDemo.java</p>
+<p>public class BusinessDelegatePatternDemo{<br>  public static void main(Stirng[] args){</p>
+<p>   BusinessDelegate businessDelegate = new BusinessDelegate();<br>   businessDelegate.setServiceType(“EJB”)</p>
+<p>   Client client =new Client(businessDelegate);<br>   client.doTask();</p>
+<p>   businessDelegate.setServiceType(“JMS”)<br>   client.doTask();<br>  }<br>}</p>
+<h3 id="步骤七"><a href="#步骤七" class="headerlink" title="步骤七"></a>步骤七</h3><p>验证输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Processing task by invoking EJB Service</span><br><span class="line">Processing task by invoking JMS Service</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -434,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/23/Scroller/" rel="next" title="Android Scroller 完全解析">
-                <i class="fa fa-chevron-left"></i> Android Scroller 完全解析
+              <a href="/2018/05/28/dagger2/" rel="next" title="Dagger2入门（一）">
+                <i class="fa fa-chevron-left"></i> Dagger2入门（一）
               </a>
             
           </div>
@@ -443,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/25/屏幕适配/" rel="prev" title="Android屏幕适配">
-                Android屏幕适配 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#invalidate-、postInvalidate-、requestLayout-总结"><span class="nav-number">1.</span> <span class="nav-text">invalidate() 、postInvalidate()、requestLayout() 总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、invalidate"><span class="nav-number">2.</span> <span class="nav-text">1、invalidate()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、requestLayout"><span class="nav-number">3.</span> <span class="nav-text">2、requestLayout()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、postInvalidate"><span class="nav-number">4.</span> <span class="nav-text">3、postInvalidate()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤一"><span class="nav-number">2.</span> <span class="nav-text">步骤一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤二"><span class="nav-number">3.</span> <span class="nav-text">步骤二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤三"><span class="nav-number">4.</span> <span class="nav-text">步骤三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤四"><span class="nav-number">5.</span> <span class="nav-text">步骤四</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤五"><span class="nav-number">6.</span> <span class="nav-text">步骤五</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤六"><span class="nav-number">7.</span> <span class="nav-text">步骤六</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤七"><span class="nav-number">8.</span> <span class="nav-text">步骤七</span></a></li></ol></div>
             
 
           </div>
