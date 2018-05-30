@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="##1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 ###Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态">
+<meta name="description" content="1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态生成的代码">
 <meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Dagger2入门（一）">
 <meta property="og:url" content="http://yoursite.com/2018/05/28/dagger2/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="##1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 ###Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态">
+<meta property="og:description" content="1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态生成的代码">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1818011-e9598e0d6581d92f.jpeg?imageMogr2/auto-orient/">
-<meta property="og:updated_time" content="2018-05-28T01:35:19.213Z">
+<meta property="og:updated_time" content="2018-05-30T01:13:09.891Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Dagger2入门（一）">
-<meta name="twitter:description" content="##1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 ###Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态">
+<meta name="twitter:description" content="1、Dagger2是什么？  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架 Dagger2介绍  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态生成的代码">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/">
 
 
@@ -366,8 +366,8 @@
       
 
       
-        <p>##1、Dagger2是什么？<br>  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？<br>  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架</p>
-<p>###Dagger2介绍<br>  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态生成的代码</p>
+        <h2 id="1、Dagger2是什么？"><a href="#1、Dagger2是什么？" class="headerlink" title="1、Dagger2是什么？"></a>1、Dagger2是什么？</h2><p>  首先，我们要明白Dagger2是Android中比较热门的依赖注入框架。什么是依赖注入呢？<br>  通俗来讲，依赖注入就是一个类中需要依赖其他对象时，不需要你亲自为那些需要依赖的对象赋值，为那些对象赋值的操作都交给了IOC框架</p>
+<h3 id="Dagger2介绍"><a href="#Dagger2介绍" class="headerlink" title="Dagger2介绍"></a>Dagger2介绍</h3><p>  一般的IOC框架都是通过反射实现的。但是Dagger2作为android的框架，为了不影响其性能，它是通过apt动态生成的代码</p>
 <blockquote>
 <p>Dagger2主要分为三个部分</p>
 </blockquote>
@@ -393,7 +393,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">public class MainModule &#123;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    public Cloth getCloth() &#123;</span><br><span class="line">        Cloth cloth = new Cloth();</span><br><span class="line">        cloth.setColor(&quot;红色&quot;);</span><br><span class="line">        return cloth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <pre><code>@Module：表面该类是Module类，Dagger2用来识别的
 @Provides:声明Module类中，该方法是依赖对象的
-在一个方法中声明@Provides注解，就相当于创建了一条生产线，这个生产线的产物就是该方法的返回值。有了这条生产线，供应商就能提供这种类型的商品，当商店老板发现有人需要这种类型的商品时，供应商就可以提供给它了
+在一个方法中声明@Provides注解，就相当于创建了一条生产线，这个生产线的产物就是该方法的返回值。有了这条生产线，
+供应商就能提供这种类型的商品，当商店老板发现有人需要这种类型的商品时，供应商就可以提供给它了
 </code></pre><h2 id="书写Component接口"><a href="#书写Component接口" class="headerlink" title="书写Component接口"></a>书写Component接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Component(modules=MainModule.class)</span><br><span class="line">public interface MainComponent &#123;</span><br><span class="line">    void inject(MainActivity mainActivity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>和Module类一样，Component也需要注解声明的，那个注解就是@Component。<br>@Component注解的作用</p>
 <pre><code>@Component注解有两个属性，分别是modules和dependcies.这两个属性的类型都是Class数组
@@ -402,14 +403,14 @@
 
  2、dependencies ：声明Component类的依赖关系，这个下面在详细讲解
 </code></pre><p>接口中的那个方法的作用</p>
-<pre><code>我们现在之声明了Component类，但是我们要怎么将Component类和依赖需求方对象联合起来呢。这个就是那个方法的作用。这个方法可以将需求方的依赖对象传送到Component类中。Component类就会根据依赖需求方对象中声明的依赖关系来注入依赖需求方对象中所有的对象
+<pre><code>我们现在之声明了Component类，但是我们要怎么将Component类和依赖需求方对象联合起来呢。这个就是那个方法的作用。
+这个方法可以将需求方的依赖对象传送到Component类中。Component类就会根据依赖需求方对象中声明的依赖关系来注入
+依赖需求方对象中所有的对象
 </code></pre><blockquote>
-<p>#####注意:<br>   本demo中,MainActivity中需要Cloth对象，所以我们通过inject方法将Activity的实例传入到依赖组件MainComponent中，依赖组件MainComponent就会从提供方MainMoudle中的getCloth方法中获取cloth实例，并将该实例赋值给依赖需求方MainActivity中的cloth字段，相当于你去商店的道路，没有这条路，你就无法去商店和老板说明你需要的东西。但是这里需要注意的是，inject方法的参数不能用父类来接收，例如本Demo中，如果inject的参数是Activity,那么Dagger2就会报错</p>
+<h5 id="注意"><a href="#注意" class="headerlink" title="注意:"></a>注意:</h5><p>   本demo中,MainActivity中需要Cloth对象，所以我们通过inject方法将Activity的实例传入到依赖组件MainComponent中，依赖组件MainComponent就会从提供方MainMoudle中的getCloth方法中获取cloth实例，并将该实例赋值给依赖需求方MainActivity中的cloth字段，相当于你去商店的道路，没有这条路，你就无法去商店和老板说明你需要的东西。但是这里需要注意的是，inject方法的参数不能用父类来接收，例如本Demo中，如果inject的参数是Activity,那么Dagger2就会报错</p>
 </blockquote>
-<p>##在MainActivity中声明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private TextView tv;</span><br><span class="line">    @Inject</span><br><span class="line">    Cloth cloth;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        tv = (TextView) findViewById(R.id.tv);</span><br><span class="line"></span><br><span class="line">        MainComponent build = DaggerMainComponent.builder().mainModule(new MainModule()).build();</span><br><span class="line">        build.inject(this);</span><br><span class="line">        tv.setText(&quot;我现在有&quot; + cloth);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>####上面代码有两处比较关键</p>
-<pre><code>1、声明依赖对象Cloth，就是在Cloth字段上添加@Inject注解，Dagger2中声明依赖对象都是通过@Inject注解的。
+<h2 id="在MainActivity中声明"><a href="#在MainActivity中声明" class="headerlink" title="在MainActivity中声明"></a>在MainActivity中声明</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    private TextView tv;</span><br><span class="line">    @Inject</span><br><span class="line">    Cloth cloth;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        super.onCreate(savedInstanceState);</span><br><span class="line">        setContentView(R.layout.activity_main);</span><br><span class="line">        tv = (TextView) findViewById(R.id.tv);</span><br><span class="line"></span><br><span class="line">        MainComponent build = DaggerMainComponent.builder().mainModule(new MainModule()).build();</span><br><span class="line">        build.inject(this);</span><br><span class="line">        tv.setText(&quot;我现在有&quot; + cloth);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="上面代码有两处比较关键"><a href="#上面代码有两处比较关键" class="headerlink" title="上面代码有两处比较关键"></a>上面代码有两处比较关键</h4><pre><code>1、声明依赖对象Cloth，就是在Cloth字段上添加@Inject注解，Dagger2中声明依赖对象都是通过@Inject注解的。
 注意：@Inject注解字段不能是private和protected
 
 2、通过dagger2自动生成的类来创建Component的实现类，创建时需要传入该ComPonent实现类所需要的Moudle类的实例。传入方法就是调用Moudle类类名首字母小写所对应的方法。这里我们通过Dagger2自动生成DaggerMainComponent类创建了。
@@ -417,16 +418,15 @@
 MainComponent的实例，相当于我们创建了一个实实在在的商店，不在是理论上的商店，但是创建商店一定要创建真是的供应商，所以创建Component实现类时一定要传入Moudle实例.(注意编写完Component接口后Dagger2并不会自动创建对应的类,需要我们点击Android Studio中bulid菜单下的Rebulid Poject选项,或者直接书写代码,编译时Dagger2就会帮你自动生成).
 
 再将MainActivity通过inject方法发送到MainComponent中，调用完inject方法后，你就会发现，MainActivity中的cloth字段已经被赋值，而且该cloth对应的就是我们在MainModule类的getCloth方法中创建的Cloth对象。
-</code></pre><p>####结果</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/" alt=""></p>
+</code></pre><h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p><img src="https://upload-images.jianshu.io/upload_images/1818011-f8884b1f3c71e61d.jpeg?imageMogr2/auto-orient/" alt=""></p>
 <h4 id="另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"><a href="#另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口" class="headerlink" title="另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"></a>另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口</h4><blockquote>
 <p>创建依赖类  shope</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class Shoe &#123;</span><br><span class="line">    @Inject</span><br><span class="line">    public Shoe() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;鞋子&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这次我们创建的方式和Cloth不一样了，我们在构造方法上声明了@Inject注解。<br>这个注解的作用：当Component所拥有的Module类找不到依赖需求方需要类型的提供方法的时候，Dagger就会检查该需要类型有没有@Inject声明的构造方法，有的话就用该构造方法创建一个<br>（相当于你去商店购买东西，你需要的东西商店的供应商不生产，商店老板只好去网上看看有没有你需要的东西，有的话就帮你网购一个）</p>
 <h4 id="在MainActivity中声明Shope"><a href="#在MainActivity中声明Shope" class="headerlink" title="在MainActivity中声明Shope"></a>在MainActivity中声明Shope</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public class MainActivity extends AppCompatActivity &#123;</span><br><span class="line">    ...</span><br><span class="line">    @Inject</span><br><span class="line">    Shoe shoe;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">        ...</span><br><span class="line">        tv.setText(&quot;我现在有&quot; + cloth + &quot;和&quot; + shoe);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p><img src="https://upload-images.jianshu.io/upload_images/1818011-e9598e0d6581d92f.jpeg?imageMogr2/auto-orient/" alt=""></p>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p> 为什么不都用这种方法来声明呢，为什么要用Moudle类？<br> 这是因为项目中，我们会用到别人的jar包，我们无法修改别人的源码，就更别说在别人的代码上添加注解了，所以我们只能通过Module类来提供</p>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p><img src="https://upload-images.jianshu.io/upload_images/1818011-e9598e0d6581d92f.jpeg?imageMogr2/auto-orient/" alt=""></p>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><p> 为什么不都用这种方法来声明呢，为什么要用Moudle类？<br> 这是因为项目中，我们会用到别人的jar包，我们无法修改别人的源码，就更别说在别人的代码上添加注解了，所以我们只能通过Module类来提供</p>
 <pre><code>Shope是在源码的构造方法上面添加@Inject
 而前面的代码是通过Module类引进进来的。
 </code></pre>
@@ -648,7 +648,7 @@ MainComponent的实例，相当于我们创建了一个实实在在的商店，�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2、实例"><span class="nav-number">1.</span> <span class="nav-text">2、实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写布料类Cloth"><span class="nav-number">2.</span> <span class="nav-text">编写布料类Cloth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写Module类"><span class="nav-number">3.</span> <span class="nav-text">书写Module类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写Component接口"><span class="nav-number">4.</span> <span class="nav-text">书写Component接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"><span class="nav-number">4.0.1.</span> <span class="nav-text">另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在MainActivity中声明Shope"><span class="nav-number">4.0.2.</span> <span class="nav-text">在MainActivity中声明Shope</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">4.1.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">4.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、Dagger2是什么？"><span class="nav-number">1.</span> <span class="nav-text">1、Dagger2是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dagger2介绍"><span class="nav-number">1.1.</span> <span class="nav-text">Dagger2介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、实例"><span class="nav-number">2.</span> <span class="nav-text">2、实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写布料类Cloth"><span class="nav-number">3.</span> <span class="nav-text">编写布料类Cloth</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写Module类"><span class="nav-number">4.</span> <span class="nav-text">书写Module类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#书写Component接口"><span class="nav-number">5.</span> <span class="nav-text">书写Component接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#注意"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">注意:</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在MainActivity中声明"><span class="nav-number">6.</span> <span class="nav-text">在MainActivity中声明</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#上面代码有两处比较关键"><span class="nav-number">6.0.1.</span> <span class="nav-text">上面代码有两处比较关键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果"><span class="nav-number">6.0.2.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#另一种方法–构造函数声明-Inject-这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口"><span class="nav-number">6.0.3.</span> <span class="nav-text">另一种方法–构造函数声明@Inject,这样我们就不需要跟上面一样那么麻烦，又要写module类，又要写什么Component接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#在MainActivity中声明Shope"><span class="nav-number">6.0.4.</span> <span class="nav-text">在MainActivity中声明Shope</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果-1"><span class="nav-number">6.1.</span> <span class="nav-text">结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-1"><span class="nav-number">6.2.</span> <span class="nav-text">注意</span></a></li></ol></li></ol></div>
             
 
           </div>
