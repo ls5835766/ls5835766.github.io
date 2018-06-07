@@ -278,7 +278,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/07/多屏幕自适应/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/06/07/多屏幕自适应/" itemprop="url">Android多屏幕自适应</a></h1>
         
 
         <div class="post-meta">
@@ -300,6 +300,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,10 +363,10 @@
       
         
           
-          Android多屏幕自适应 1、一般的基本原则以及总结
+           1、一般的基本原则以及总结
 1、xml布局中不要写死，即单位不要用px,尽量用dp,或者march_parent,wrap_content
 2、尽量把资源图片设计成可以拉伸的.9图，如果有渐变，尽量横向或竖向单方向渐变，这样能大大减少安装包的大小。同时也能够提高处理速度
-
+3、如果不想多设计图片，那
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -407,7 +440,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/06/Fragment通信/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/06/06/Fragment通信/" itemprop="url">Fragment与Fragment之间进行通信</a></h1>
         
 
         <div class="post-meta">
@@ -429,6 +462,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -459,12 +525,13 @@
       
         
           
-          Fragment与Fragment之间进行通信
+          
 1、大部分的Fragmtn与Activity之前的通信方式 ：主流的是一个Activity数组+许多的Fragment的架构模式。
 
 
 首先,F1到MainActivity， 然后MainActivity到F2
-其次,F2到MainActivity, 
+其次,F2到MainActivity, 然后MainActivity到F3
+下面我们来
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -538,7 +605,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/05/内存泄漏处理/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/06/05/内存泄漏处理/" itemprop="url">性能优化</a></h1>
         
 
         <div class="post-meta">
@@ -560,6 +627,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -590,10 +690,10 @@
       
         
           
-          性能优化1、内存优化2、网络优化3、电量优化4、View优化5、安装包的优化（安装包的瘦身）6、多线程并发性能优化
+          1、内存优化2、网络优化3、电量优化4、View优化5、安装包的优化（安装包的瘦身）6、多线程并发性能优化
 1、内存泄漏优化–LeakCanary直接检测首先，先了解一下内存泄漏1、什么是内存泄漏？
 内存没有被gc回收。内存被引用了，但是gc没有办法把其回收掉。
-2、什么对象不能够被垃圾回收
+2、什么对象不能够被垃圾回收机制回收
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -667,7 +767,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/04/Handler发送消息demo/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/06/04/Handler发送消息demo/" itemprop="url">Handler发送消息，接收消息的相关代码</a></h1>
         
 
         <div class="post-meta">
@@ -689,6 +789,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -719,7 +852,7 @@
       
         
           
-          Handler发送消息，接收消息的相关代码12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&#123;     @Overrid
+          12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&#123;     @Override     public void han
           ...
           <!--noindex-->
           <div class="post-button text-center">

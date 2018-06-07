@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Android, DIY" />
+  <meta name="keywords" content="实用,个人博客," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="Handler发送消息，接收消息的相关代码12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&amp;#123;     @Override     public void handleMessage(Message msg) &amp;#123">
+<meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&amp;#123;     @Override     public void handleMessage(Message msg) &amp;#123;         super.handl">
+<meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My_blog">
+<meta property="og:title" content="Handler发送消息，接收消息的相关代码">
 <meta property="og:url" content="http://yoursite.com/2018/06/04/Handler发送消息demo/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="Handler发送消息，接收消息的相关代码12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&amp;#123;     @Override     public void handleMessage(Message msg) &amp;#123">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&amp;#123;     @Override     public void handleMessage(Message msg) &amp;#123;         super.handl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-04T03:14:52.141Z">
+<meta property="og:updated_time" content="2018-06-07T06:08:43.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My_blog">
-<meta name="twitter:description" content="Handler发送消息，接收消息的相关代码12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&amp;#123;     @Override     public void handleMessage(Message msg) &amp;#123">
+<meta name="twitter:title" content="Handler发送消息，接收消息的相关代码">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940 private Handler handler =new Handler()&amp;#123;     @Override     public void handleMessage(Message msg) &amp;#123;         super.handl">
 
 
 
@@ -125,7 +126,7 @@
 
 
 
-  <title> | My_blog</title>
+  <title>Handler发送消息，接收消息的相关代码 | My_blog</title>
   
 
 
@@ -279,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Handler发送消息，接收消息的相关代码</h1>
         
 
         <div class="post-meta">
@@ -301,6 +302,39 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/" itemprop="url" rel="index">
+                    <span itemprop="name">实用技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/实用技术/个人博客/" itemprop="url" rel="index">
+                    <span itemprop="name">个人博客</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -329,7 +363,7 @@
       
 
       
-        <h3 id="Handler发送消息，接收消息的相关代码"><a href="#Handler发送消息，接收消息的相关代码" class="headerlink" title="Handler发送消息，接收消息的相关代码"></a>Handler发送消息，接收消息的相关代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> private Handler handler =new Handler()&#123;</span><br><span class="line">     @Override</span><br><span class="line">     public void handleMessage(Message msg) &#123;</span><br><span class="line">         super.handleMessage(msg);</span><br><span class="line">         switch (msg.what) &#123;</span><br><span class="line">             /**</span><br><span class="line">              * 设备相关信息</span><br><span class="line">              */</span><br><span class="line">             case 10000:</span><br><span class="line">                 DeviceResponse deviceResponse= (DeviceResponse) msg.obj;</span><br><span class="line">                 Log.e(TAG,deviceResponse.getBattery()+&quot;+++++++++====&quot;);</span><br><span class="line">                 break;</span><br><span class="line"></span><br><span class="line">             /**</span><br><span class="line">              * 任务状态推送</span><br><span class="line">              */</span><br><span class="line">             case 10003:</span><br><span class="line">                 NavigationResponse navigationResponse= (NavigationResponse) msg.obj;</span><br><span class="line">                 if(navigationResponse!=null) &#123;</span><br><span class="line">                     Log.e(TAG, navigationResponse.getData().getExpectedDestination().getName()+ &quot;********======&quot;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 break;</span><br><span class="line"></span><br><span class="line">             /**</span><br><span class="line">              * 任务状态推送</span><br><span class="line">              */</span><br><span class="line">             case 10004:</span><br><span class="line">                 MergeResponse mergeResponse= (MergeResponse) msg.obj;</span><br><span class="line">                 if(mergeResponse!=null) &#123;</span><br><span class="line">                     Log.e(TAG, mergeResponse.getStatusData().getName() + &quot;--------======&quot;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 break;</span><br><span class="line"></span><br><span class="line">             default:</span><br><span class="line">                 break;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line">FootManager.getInstance().setHandler(handler);</span><br></pre></td></tr></table></figure>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"> private Handler handler =new Handler()&#123;</span><br><span class="line">     @Override</span><br><span class="line">     public void handleMessage(Message msg) &#123;</span><br><span class="line">         super.handleMessage(msg);</span><br><span class="line">         switch (msg.what) &#123;</span><br><span class="line">             /**</span><br><span class="line">              * 设备相关信息</span><br><span class="line">              */</span><br><span class="line">             case 10000:</span><br><span class="line">                 DeviceResponse deviceResponse= (DeviceResponse) msg.obj;</span><br><span class="line">                 Log.e(TAG,deviceResponse.getBattery()+&quot;+++++++++====&quot;);</span><br><span class="line">                 break;</span><br><span class="line"></span><br><span class="line">             /**</span><br><span class="line">              * 任务状态推送</span><br><span class="line">              */</span><br><span class="line">             case 10003:</span><br><span class="line">                 NavigationResponse navigationResponse= (NavigationResponse) msg.obj;</span><br><span class="line">                 if(navigationResponse!=null) &#123;</span><br><span class="line">                     Log.e(TAG, navigationResponse.getData().getExpectedDestination().getName()+ &quot;********======&quot;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 break;</span><br><span class="line"></span><br><span class="line">             /**</span><br><span class="line">              * 任务状态推送</span><br><span class="line">              */</span><br><span class="line">             case 10004:</span><br><span class="line">                 MergeResponse mergeResponse= (MergeResponse) msg.obj;</span><br><span class="line">                 if(mergeResponse!=null) &#123;</span><br><span class="line">                     Log.e(TAG, mergeResponse.getStatusData().getName() + &quot;--------======&quot;);</span><br><span class="line">                 &#125;</span><br><span class="line">                 break;</span><br><span class="line"></span><br><span class="line">             default:</span><br><span class="line">                 break;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;;</span><br><span class="line"></span><br><span class="line">FootManager.getInstance().setHandler(handler);</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">   public Handler mHandler;</span><br><span class="line"></span><br><span class="line">public void setHandler(Handler handler)&#123;</span><br><span class="line">       this.mHandler=handler;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">       Message message=new Message();</span><br><span class="line">       message.what=10003;</span><br><span class="line">       message.obj=rp;</span><br><span class="line">       mHandler.sendMessage(message);</span><br></pre></td></tr></table></figure>
       
     </div>
@@ -374,6 +408,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/实用/" rel="tag"># 实用</a>
+          
+            <a href="/tags/个人博客/" rel="tag"># 个人博客</a>
+          
+        </div>
+      
 
       
       
@@ -393,8 +435,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/05/内存泄漏处理/" rel="prev" title="">
-                 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/06/05/内存泄漏处理/" rel="prev" title="性能优化">
+                性能优化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -447,17 +489,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -531,22 +564,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Handler发送消息，接收消息的相关代码"><span class="nav-number">1.</span> <span class="nav-text">Handler发送消息，接收消息的相关代码</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
