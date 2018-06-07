@@ -79,13 +79,23 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="性能优化1、内存优化2、网络优化3、电量优化4、View优化5、安装包的优化（安装包的瘦身）6、多线程并发性能优化 1、内存泄漏优化–LeakCanary直接检测首先，先了解一下内存泄漏1、什么是内存泄漏？ 内存没有被gc回收。内存被引用了，但是gc没有办法把其回收掉。 2、什么对象不能够被垃圾回收机制回收 存活在GC Root下面的 2、内存泄漏的原因？ 1、java stack中引用指向的对象">
+<meta property="og:type" content="article">
 <meta property="og:title" content="My_blog">
-<meta property="og:url" content="http://yoursite.com/tags/实用/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/06/05/内存泄漏处理/index.html">
 <meta property="og:site_name" content="My_blog">
+<meta property="og:description" content="性能优化1、内存优化2、网络优化3、电量优化4、View优化5、安装包的优化（安装包的瘦身）6、多线程并发性能优化 1、内存泄漏优化–LeakCanary直接检测首先，先了解一下内存泄漏1、什么是内存泄漏？ 内存没有被gc回收。内存被引用了，但是gc没有办法把其回收掉。 2、什么对象不能够被垃圾回收机制回收 存活在GC Root下面的 2、内存泄漏的原因？ 1、java stack中引用指向的对象">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://img-blog.csdn.net/20160729200333410">
+<meta property="og:image" content="https://img-blog.csdn.net/20160729200620992">
+<meta property="og:image" content="https://img-blog.csdn.net/20160729185539514">
+<meta property="og:image" content="https://img-blog.csdn.net/20160729193458267">
+<meta property="og:image" content="https://img-blog.csdn.net/20160729193602918">
+<meta property="og:updated_time" content="2018-06-05T09:41:16.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="My_blog">
+<meta name="twitter:description" content="性能优化1、内存优化2、网络优化3、电量优化4、View优化5、安装包的优化（安装包的瘦身）6、多线程并发性能优化 1、内存泄漏优化–LeakCanary直接检测首先，先了解一下内存泄漏1、什么是内存泄漏？ 内存没有被gc回收。内存被引用了，但是gc没有办法把其回收掉。 2、什么对象不能够被垃圾回收机制回收 存活在GC Root下面的 2、内存泄漏的原因？ 1、java stack中引用指向的对象">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20160729200333410">
 
 
 
@@ -115,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/实用/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/05/内存泄漏处理/"/>
 
 
 
 
 
-  <title>标签: 实用 | My_blog</title>
+  <title> | My_blog</title>
   
 
 
@@ -140,7 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,306 +254,189 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>实用<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/05/内存泄漏处理/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhangy">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="My_blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/05/29/业务者模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式之业务代表模式</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline"></h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-29T14:18:19+08:00"
-              content="2018-05-29" >
-          05-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-05T17:41:16+08:00">
+                2018-06-05
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/28/dagger2/" itemprop="url">
-              
-                <span itemprop="name">Dagger2入门（一）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-28T09:34:28+08:00"
-              content="2018-05-28" >
-          05-28
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/25/虹软人脸识别/" itemprop="url">
-              
-                <span itemprop="name">ArcFace虹软Sdk集成Demo实现</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-25T16:09:35+08:00"
-              content="2018-05-25" >
-          05-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/25/屏幕适配/" itemprop="url">
-              
-                <span itemprop="name">Android屏幕适配</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-25T09:15:36+08:00"
-              content="2018-05-25" >
-          05-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/23/UI刷新绘制/" itemprop="url">
-              
-                <span itemprop="name">UI刷新绘制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T18:54:32+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/23/Scroller/" itemprop="url">
-              
-                <span itemprop="name">Android Scroller 完全解析</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T14:14:08+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/23/View事件的体系/" itemprop="url">
-              
-                <span itemprop="name">View的基础知识</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-23T02:29:28+08:00"
-              content="2018-05-23" >
-          05-23
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/22/Menu/" itemprop="url">
-              
-                <span itemprop="name">Android Menu的用法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-22T02:08:49+08:00"
-              content="2018-05-22" >
-          05-22
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/21/toolbar_theme_poptheme/" itemprop="url">
-              
-                <span itemprop="name">android中Toolbar中app:theme与app:popupTheme相关属性的详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-21T14:04:04+08:00"
-              content="2018-05-21" >
-          05-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/20/hello-world/" itemprop="url">
-              
-                <span itemprop="name">个人博客搭建详解（Windows和Mac通用版）</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-20T18:37:57+08:00"
-              content="2018-05-20" >
-          05-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><p>1、内存优化<br>2、网络优化<br>3、电量优化<br>4、View优化<br>5、安装包的优化（安装包的瘦身）<br>6、多线程并发性能优化</p>
+<h3 id="1、内存泄漏优化–LeakCanary直接检测"><a href="#1、内存泄漏优化–LeakCanary直接检测" class="headerlink" title="1、内存泄漏优化–LeakCanary直接检测"></a>1、内存泄漏优化–LeakCanary直接检测</h3><p>首先，先了解一下内存泄漏<br>1、什么是内存泄漏？</p>
+<pre><code>内存没有被gc回收。内存被引用了，但是gc没有办法把其回收掉。
+</code></pre><p>2、什么对象不能够被垃圾回收机制回收</p>
+<pre><code>存活在GC Root下面的
+</code></pre><p>2、内存泄漏的原因？</p>
+<pre><code>1、java stack中引用指向的对象不能被gc回收
+2、jni（本地方法区）引用指向的对象也不能被gc回收
+3、静态引用指向的对象也不能被gc回收
+4、栈中的常量引用也不能被gc回收
+5、活着的Thread也不能被gc回收
+</code></pre><p>其次，我们怎么解决内存泄漏的问题呢？</p>
+<h3 id="2、定位内存泄漏"><a href="#2、定位内存泄漏" class="headerlink" title="2、定位内存泄漏"></a>2、定位内存泄漏</h3><p>  首先，我们打开插上模拟器，启动应用后，走一下几个activity的流程，然后打开Android Monitor,可以查看镜像<br>   <img src="https://img-blog.csdn.net/20160729200333410" alt=""></p>
+<p>  点击 小卡车图标(图中1位置图标) 可以触发一次 GC,然后dump java herof文件，保存起来<br>  <img src="https://img-blog.csdn.net/20160729200620992" alt=""></p>
+<p>  其次，下载MAT工具，我们来分析一下，内存泄漏的原因，打开工具<br>  <img src="https://img-blog.csdn.net/20160729185539514" alt=""></p>
+<p>  然后倒入文件，然后我们继续dump一下没有操作时候的文件。我们可以对比的看一下<br>  <img src="https://img-blog.csdn.net/20160729193458267" alt=""><br>  <img src="https://img-blog.csdn.net/20160729193602918" alt=""></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/uploads/images/wechat-reward-image.png" alt="Zhangy 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/uploads/images/alipay-reward-image.png" alt="Zhangy 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/04/Handler发送消息demo/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/06/Fragment通信/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -551,6 +444,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -571,8 +468,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -646,6 +552,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能优化"><span class="nav-number">1.</span> <span class="nav-text">性能优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1、内存泄漏优化–LeakCanary直接检测"><span class="nav-number">2.</span> <span class="nav-text">1、内存泄漏优化–LeakCanary直接检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、定位内存泄漏"><span class="nav-number">3.</span> <span class="nav-text">2、定位内存泄漏</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -779,6 +701,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
