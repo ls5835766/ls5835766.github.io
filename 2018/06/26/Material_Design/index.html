@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。  客户端（Client）-表示层代码可以是UI java代码 业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问 查询服务（LookUp Service）-查">
+<meta name="description" content="一、关于Material Desingn从Android5.0开始引入的，是一种全新的设计语言（翻译为“原材料设计”）,其实谷歌提倡的是一种设计风格。层次感：View(Z)轴 详细可以参考：Material Design中文版 1、对于美工：遵循MD的界面设计、图标合集2、对于产品经理：遵循MD界面设计、页面的跳转、动画效果、交互设计3、对于开发人员：参与原型设计、知道美工原型设计的素材准备">
 <meta name="keywords" content="实用,个人博客">
 <meta property="og:type" content="article">
-<meta property="og:title" content="设计模式之业务代表模式">
-<meta property="og:url" content="http://yoursite.com/2018/05/29/业务者模式/index.html">
+<meta property="og:title" content="Material Design 概述# 这是标题">
+<meta property="og:url" content="http://yoursite.com/2018/06/26/Material_Design/index.html">
 <meta property="og:site_name" content="My_blog">
-<meta property="og:description" content="业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。  客户端（Client）-表示层代码可以是UI java代码 业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问 查询服务（LookUp Service）-查">
+<meta property="og:description" content="一、关于Material Desingn从Android5.0开始引入的，是一种全新的设计语言（翻译为“原材料设计”）,其实谷歌提倡的是一种设计风格。层次感：View(Z)轴 详细可以参考：Material Design中文版 1、对于美工：遵循MD的界面设计、图标合集2、对于产品经理：遵循MD界面设计、页面的跳转、动画效果、交互设计3、对于开发人员：参与原型设计、知道美工原型设计的素材准备">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-29T06:19:05.282Z">
+<meta property="og:updated_time" content="2018-06-26T02:00:24.680Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="设计模式之业务代表模式">
-<meta name="twitter:description" content="业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。  客户端（Client）-表示层代码可以是UI java代码 业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问 查询服务（LookUp Service）-查">
+<meta name="twitter:title" content="Material Design 概述# 这是标题">
+<meta name="twitter:description" content="一、关于Material Desingn从Android5.0开始引入的，是一种全新的设计语言（翻译为“原材料设计”）,其实谷歌提倡的是一种设计风格。层次感：View(Z)轴 详细可以参考：Material Design中文版 1、对于美工：遵循MD的界面设计、图标合集2、对于产品经理：遵循MD界面设计、页面的跳转、动画效果、交互设计3、对于开发人员：参与原型设计、知道美工原型设计的素材准备">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/29/业务者模式/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/26/Material_Design/"/>
 
 
 
 
 
-  <title>设计模式之业务代表模式 | My_blog</title>
+  <title>Material Design 概述# 这是标题 | My_blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/业务者模式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/26/Material_Design/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhangy">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">设计模式之业务代表模式</h1>
+          <h1 class="post-title" itemprop="name headline">Material Design 概述# 这是标题</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-29T14:18:19+08:00">
-                2018-05-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-26T09:59:17+08:00">
+                2018-06-26
               </time>
             
 
@@ -363,27 +363,38 @@
       
 
       
-        <p>业务代表模式（Business Delegate Pattern）用于对表示层和业务层的解耦，它基本上是用来减少通信或对表示层代码中的业务层代码的远程查询功能。在业务中我们有以下实体。</p>
-<ul>
-<li>客户端（Client）-表示层代码可以是UI java代码</li>
-<li>业务代表（Business Delegate）-一个为客户端实体提供的入口类，它提供了对业务服务方法的访问</li>
-<li>查询服务（LookUp Service）-查找服务对象负责获取相关的业务实现，并提供业务服务方法的访问</li>
-<li>业务服务 （Business Service）-查询服务接口，实现了该业务服务的实体类，提供了实际的业务实现逻辑</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h3 id="步骤一"><a href="#步骤一" class="headerlink" title="步骤一"></a>步骤一</h3><p>创建BusinessService接口<br>BusinessService.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface BusinessService&#123;</span><br><span class="line">   public void doProcessing();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="步骤二"><a href="#步骤二" class="headerlink" title="步骤二"></a>步骤二</h3><p>创建实体服务类<br>EJBService.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class EJBService implements BusinessService&#123;</span><br><span class="line">   </span><br><span class="line">   @Override</span><br><span class="line">   public void doProcessing()&#123;</span><br><span class="line">     System.out.print(&quot;Peocessing task by invoking EJB Service&quot;)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>JMSService.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pubilc class JMSService implements BusinessService&#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">   public void doProcessing()&#123;</span><br><span class="line">     System.out.print(&quot;Peocessing task by invoking JMS Service&quot;)</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="步骤三"><a href="#步骤三" class="headerlink" title="步骤三"></a>步骤三</h3><p>创建业务查询服务<br>BusinessLookUp.java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public class BusinessLookUp&#123;</span><br><span class="line">  public BusinessService getBusinessService(String serviceType)&#123;</span><br><span class="line">    if(serviceType.equalsIgnoreCase(&quot;EJB&quot;))&#123;</span><br><span class="line">         return new EJBService();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">         return new JMSService();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤四"><a href="#步骤四" class="headerlink" title="步骤四"></a>步骤四</h3><p>创建业务代表<br>BusinessDelegate.java</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">public class BusinessDelegate&#123;</span><br><span class="line">   private BusinessLookUp lookUpService = new BusinessLookUp()</span><br><span class="line">   private BusinessService businessService;</span><br><span class="line">   private String serviceType;</span><br><span class="line">   </span><br><span class="line">   public vcid setServiceType(String serviceType)&#123;</span><br><span class="line">   this.serviceType = serviceType;</span><br><span class="line">   &#125;</span><br><span class="line">   </span><br><span class="line">   public void doTask()&#123;</span><br><span class="line">   businessService = lookUpService.getBusinessService(serviceType);</span><br><span class="line">   businessService.doProcessing();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="步骤五"><a href="#步骤五" class="headerlink" title="步骤五"></a>步骤五</h3><p>创建客户端<br>Client.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">pubilc class Client&#123;</span><br><span class="line">  private BusinessDelegate businessDelegate;</span><br><span class="line">  </span><br><span class="line">  public Client(BusinessDelegate businessDeegate)&#123;</span><br><span class="line">    this.businessDelegate = businessDelegate;</span><br><span class="line">  &#125;</span><br><span class="line">  public void doTask()&#123;</span><br><span class="line">   businessDelegate.doTask();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="步骤六"><a href="#步骤六" class="headerlink" title="步骤六"></a>步骤六</h3><p>使用businessDelegate和Client类演示业务代表模式<br>BusinessDelegatePatternDemo.java</p>
-<p>public class BusinessDelegatePatternDemo{<br>  public static void main(Stirng[] args){</p>
-<p>   BusinessDelegate businessDelegate = new BusinessDelegate();<br>   businessDelegate.setServiceType(“EJB”)</p>
-<p>   Client client =new Client(businessDelegate);<br>   client.doTask();</p>
-<p>   businessDelegate.setServiceType(“JMS”)<br>   client.doTask();<br>  }<br>}</p>
-<h3 id="步骤七"><a href="#步骤七" class="headerlink" title="步骤七"></a>步骤七</h3><p>验证输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Processing task by invoking EJB Service</span><br><span class="line">Processing task by invoking JMS Service</span><br></pre></td></tr></table></figure></p>
+        <h4 id="一、关于Material-Desingn"><a href="#一、关于Material-Desingn" class="headerlink" title="一、关于Material Desingn"></a>一、关于Material Desingn</h4><p>从Android5.0开始引入的，是一种全新的设计语言（翻译为“原材料设计”）,其实谷歌提倡的是一种设计风格。<br>层次感：View(Z)轴</p>
+<p>详细可以参考：<a href="http://wiki.jikexueyuan.com/project/material-design/whatis-material-design/elevation-shadows.html" target="_blank" rel="noopener">Material Design中文版</a></p>
+<p>1、对于美工：遵循MD的界面设计、图标合集<br>2、对于产品经理：遵循MD界面设计、页面的跳转、动画效果、交互设计<br>3、对于开发人员：参与原型设计、知道美工原型设计的素材准备<br>               开发实现MD的设计——-界面、动画、转场动画等等</p>
+<h4 id="二、MD的使用和开发"><a href="#二、MD的使用和开发" class="headerlink" title="二、MD的使用和开发"></a>二、MD的使用和开发</h4><p>1、利用Material Design的API来实现<br>2、利用自定义控件来实现<br>3、SDK里面的一些包的情况</p>
+<blockquote>
+<p>D:\compress\AndroidStudio\sdk\extras\android\m2repository\com\android</p>
+</blockquote>
+<p>Preference : 设置页面，通过配置文件达到界面设计的效果。<br>precent：界面的百分比<br>design :material design 需要的依赖</p>
+<p>1、谷歌开放以及收了一些最新的开源项目（很多事自己开发的），汇集到最新的support支持包以及最新的5.X API里面去<br>2、android-support-v4:兼容包   最低兼容到Android1.6系统，里面有类似ViewPager等控件<br>3、android-support-v7：</p>
+<pre><code>appcompat、cardview、gridlayout、mediarouter、palette、preference、recycleView（最低兼容到3.0）
+</code></pre><p>最低兼容到2.1的系统，但是其他的有些控件兼容到3.0，这个工程可以让开发人员统一开发标准，在任何的系统版本下保证兼容性。<br>比如：Theme主题、value、布局、新的控件、新的动画特效实现。</p>
+<h4 id="所以现在ADT、AndroidStudio一般都会创建项目的时候就直接帮你新建或者引入了appcompat的项目（这里可能会碰到很多问题，"><a href="#所以现在ADT、AndroidStudio一般都会创建项目的时候就直接帮你新建或者引入了appcompat的项目（这里可能会碰到很多问题，" class="headerlink" title="所以现在ADT、AndroidStudio一般都会创建项目的时候就直接帮你新建或者引入了appcompat的项目（这里可能会碰到很多问题，"></a>所以现在ADT、AndroidStudio一般都会创建项目的时候就直接帮你新建或者引入了appcompat的项目（这里可能会碰到很多问题，</h4><h4 id="1、appcompat-v7项目本身就存在问题，什么原因？"><a href="#1、appcompat-v7项目本身就存在问题，什么原因？" class="headerlink" title="1、appcompat-v7项目本身就存在问题，什么原因？"></a>1、appcompat-v7项目本身就存在问题，什么原因？</h4><p>build的版本太低了，要么是SDK太久了，要么SDK很新，但是兼容包没有更新。）</p>
+<h4 id="2、appcompat-v7好不容易没报错，但是项目报错，一看控制台，报appcompat里面的某个res-values-theme-xxx属性不存在等等"><a href="#2、appcompat-v7好不容易没报错，但是项目报错，一看控制台，报appcompat里面的某个res-values-theme-xxx属性不存在等等" class="headerlink" title="2、appcompat-v7好不容易没报错，但是项目报错，一看控制台，报appcompat里面的某个res/values/theme/xxx属性不存在等等"></a>2、appcompat-v7好不容易没报错，但是项目报错，一看控制台，报appcompat里面的某个res/values/theme/xxx属性不存在等等</h4><p>因为你引入的是appcompat-v7很新,但是要求很高的版本编译。但是Eclipse在引入该项目的主项目编译的时候也必须要得到这个很高的版本。–直接使用最高版本编译</p>
+<p>4、SDK升级：API升级、兼容包的升级、工具的升级。</p>
+<p>————————————1、Material Design控制项目全局样式———————–<br>1、为什么要用appcompat项目，因为里面是谷歌精心准备的—解决android碎片化开发蛋疼的问题，让我们的app编译出来在各种高低版本之间、不同的厂商生产的ROM之间显示出来的效果UI控件等有较一致的体验</p>
+<p>2、SDK在更新的版本上，几个重要的版本是14（4.0），19（4.4），21（5.0）</p>
+<p>————————————2、Material Design兼容性控件的使用———————–<br>尤其是在appcompat-v7里面有很多为兼容而生的控件<br>这样就可以做到高低版本和不同的ROM之间体验一致，还可以配合appcompat的主题使用达到一致性<br>1、android.support.v7.app.AlertDialog<br>2、进度条样式的设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">style=&quot;@style/Widget.AppCompat.ProgressBar.Horizontal&quot;</span><br></pre></td></tr></table></figure></p>
+<p>3、SwipeRefreshLayout 下拉刷新</p>
+<p>4、PopupWinow<br>ListPopupWindow<br>PopupMenu<br>LinearLayoutCompat–给包裹在里面的所以子控件添加间隔线</p>
+<p>————————————V7 RecycleView———————–<br>特点：谷歌在高级版本提出一个新的替代ListView,GradView的控件。<br>高度解耦  是通过LayoutManager来解耦<br>软件：低耦合，高内聚（但是比listView更加复杂一些，而且没有条目点击事件）</p>
+<p>Adapter里面种的泛型RecyclerView.ViewHolder 自带性能优化</p>
+<p>报错：NollPointException<br>分析源码<br>   MyViewHolder myViewHolder=new MyViewHolder(View.inflate(parent.getContext(),android.R.layout.simple_list_item_1,null));<br>   最终会调用<br>   inflate(resource,root,root!=null)<br>–&gt; inflate(resource,null,false); </p>
+<p>经过修改，还是报错<br>java.lang.IllegalStateException: The specified child already has a parent. You must call removeView() on the child’s parent first.</p>
+<p>分析LinerLayoutCompat源码,分析实现的原理，是如何做到给里面的child之间添加间隔线的</p>
+<p>先看了构造函数</p>
+<p>View的绘制会经过三个方法onMeasure(测量自身和里面的所有的子控件) onLayout(摆放里面的所有子控件),onDraw(进行绘制)<br>猜想：1）measureWidth和measureHeight会变大（加上间隔线）。2）摆放子控件的位置会有一定的体现（childView中的：top/left/right/bottom）<br>3）绘制的时候也会有体现（childView中的：top/left/right/bottom）</p>
+<p>RecycleView天生没有自己的点击事件</p>
+<p>————————————RecycleView设置分割线———————–<br>1、RecycleView没有默认的分割线，需要自己绘制<br>RecyclieView.ItemDecoration<br>   1)线型的分割线<br>   2）网格的分割线</p>
+<p>绘制分发<br>  绘制RecycleView的时候回分发Canvas到ItemDecoration里面</p>
+<p>listview.addView()<br>listview.addfooter();<br>RecycleView没有这样的方法，所以我们通过看ListView的源码，如何解决这个问题<br>ListView.addHeaderView();<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (!(mAdapter instanceof HeaderViewListAdapter)) &#123;</span><br><span class="line">               wrapHeaderListAdapterInternal();</span><br><span class="line">           &#125;</span><br></pre></td></tr></table></figure></p>
+<p>ListView.setAdapter()<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (mHeaderViewInfos.size() &gt; 0|| mFooterViewInfos.size() &gt; 0) &#123;</span><br><span class="line">        mAdapter = wrapHeaderListAdapterInternal(mHeaderViewInfos, mFooterViewInfos, adapter);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        mAdapter = adapter;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="通过上面的代码，可以看到实际上就是包裹了一层"><a href="#通过上面的代码，可以看到实际上就是包裹了一层" class="headerlink" title="通过上面的代码，可以看到实际上就是包裹了一层"></a>通过上面的代码，可以看到实际上就是包裹了一层</h4><p>ListView.setAdapter(new SimpleAdapter(xxx))</p>
 
       
     </div>
@@ -445,8 +456,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/28/dagger2/" rel="next" title="Dagger2入门（一）">
-                <i class="fa fa-chevron-left"></i> Dagger2入门（一）
+              <a href="/2018/06/07/多屏幕自适应/" rel="next" title="Android多屏幕自适应">
+                <i class="fa fa-chevron-left"></i> Android多屏幕自适应
               </a>
             
           </div>
@@ -454,10 +465,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/04/Handler发送消息demo/" rel="prev" title="Handler发送消息，接收消息的相关代码">
-                Handler发送消息，接收消息的相关代码 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +610,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤一"><span class="nav-number">2.</span> <span class="nav-text">步骤一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤二"><span class="nav-number">3.</span> <span class="nav-text">步骤二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤三"><span class="nav-number">4.</span> <span class="nav-text">步骤三</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤四"><span class="nav-number">5.</span> <span class="nav-text">步骤四</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤五"><span class="nav-number">6.</span> <span class="nav-text">步骤五</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤六"><span class="nav-number">7.</span> <span class="nav-text">步骤六</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤七"><span class="nav-number">8.</span> <span class="nav-text">步骤七</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、关于Material-Desingn"><span class="nav-number">1.</span> <span class="nav-text">一、关于Material Desingn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、MD的使用和开发"><span class="nav-number">2.</span> <span class="nav-text">二、MD的使用和开发</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#所以现在ADT、AndroidStudio一般都会创建项目的时候就直接帮你新建或者引入了appcompat的项目（这里可能会碰到很多问题，"><span class="nav-number">3.</span> <span class="nav-text">所以现在ADT、AndroidStudio一般都会创建项目的时候就直接帮你新建或者引入了appcompat的项目（这里可能会碰到很多问题，</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1、appcompat-v7项目本身就存在问题，什么原因？"><span class="nav-number">4.</span> <span class="nav-text">1、appcompat-v7项目本身就存在问题，什么原因？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、appcompat-v7好不容易没报错，但是项目报错，一看控制台，报appcompat里面的某个res-values-theme-xxx属性不存在等等"><span class="nav-number">5.</span> <span class="nav-text">2、appcompat-v7好不容易没报错，但是项目报错，一看控制台，报appcompat里面的某个res/values/theme/xxx属性不存在等等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#通过上面的代码，可以看到实际上就是包裹了一层"><span class="nav-number">6.</span> <span class="nav-text">通过上面的代码，可以看到实际上就是包裹了一层</span></a></li></ol></div>
             
 
           </div>
